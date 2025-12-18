@@ -11,7 +11,7 @@ export default function BreedCard({ _id, name, high, fciNumber, imageUrl }) {
           <Image
             src={imageSrc}
             alt={name}
-            width={300}
+            width={200}
             height={200}
             className="breed-image"
           />
