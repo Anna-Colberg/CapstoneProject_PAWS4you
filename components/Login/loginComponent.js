@@ -1,11 +1,11 @@
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import {
-  StyledLoginContainerDiv,
   StyledLoginBoxDiv,
   StyledLoginButton,
+  StyledLoginContainerDiv,
   StyledLoginHeader,
-} from "./StyledLogin";
+} from "./styledLogin";
 
 export default function LoginComponent() {
   const { data: session } = useSession();
