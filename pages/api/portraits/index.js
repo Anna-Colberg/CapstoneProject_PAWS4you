@@ -1,6 +1,9 @@
 import dbConnect from "@/db/connect";
 import Portraits from "@/db/models/Portraits";
 
+
+// Portrait-Daten werden aus der Datenbank abgerufen
+
 export default async function portraithandler(request, response) {
     await dbConnect();
 

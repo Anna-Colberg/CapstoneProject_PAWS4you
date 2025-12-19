@@ -1,7 +1,11 @@
 import dbConnect from "@/db/connect";
 import Portraits from "@/db/models/Portraits";
 
-export default async function handler(request, response) {
+
+//ID werden aus der URL gelesen,
+//einzelne Portraits werden aus DB gezogen,
+
+export default async function eachPortraithandler(request, response) {
   await dbConnect();
 
   const { id } = request.query;
@@ -16,11 +20,11 @@ export default async function handler(request, response) {
     if (!portrait) {
       return response
         .status(404)
-        .json({ status: "Hunderasse nicht gefunden !" });
+        .json({ status: "Portrait not found !" });
     }
 
     return response.status(200).json(portrait);
   } catch (error) {
-    return response.status(400).json({ status: "Ungültige ID" });
+    return response.status(400).json({ status: "Invalid ID" });
   }
 }
