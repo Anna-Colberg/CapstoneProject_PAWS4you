@@ -2,6 +2,7 @@ import BreedList from "@/components/BreedList";
 import { useMemo, useState } from "react";
 import useSWR from "swr";
 
+
 export default function Listhandler() {
   const { data: dogs, isLoading, error } = useSWR("/api/portraits");
   
@@ -22,3 +23,11 @@ export default function Listhandler() {
     </div>
   );
 }
+
+
+//mit sortedDogs werden die Hunderassen nach dem Namen sortiert
+//React-Hook useMemo(für Berechnungen/ Sortieren = Berechnen) 
+//merkt sich dies und ändert sich nur, wenn Dogs neu gerendert wird.
+
+//.slice = Kopieren / .sort = Sortieren, Array wird neu dargestellt 
+//.localeCompare = Alphabetisches sortieren
