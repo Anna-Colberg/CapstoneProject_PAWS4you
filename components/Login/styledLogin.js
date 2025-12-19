@@ -2,15 +2,6 @@ import Link from "next/link";
 import styled from "styled-components";
 
 
-
-:root {
---text: #ece2e3;
---background: #0b0506;
---primary: #e08e98;
---secondary: #971525;
---accent: #f71e39;
-}
-
 export const StyledLoginContainerDiv = styled.div`
   display: flex;
   flex-direction: column;
