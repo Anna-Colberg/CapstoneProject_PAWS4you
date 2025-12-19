@@ -1,6 +1,16 @@
 import Link from "next/link";
 import styled from "styled-components";
 
+
+
+:root {
+--text: #ece2e3;
+--background: #0b0506;
+--primary: #e08e98;
+--secondary: #971525;
+--accent: #f71e39;
+}
+
 export const StyledLoginContainerDiv = styled.div`
   display: flex;
   flex-direction: column;
@@ -14,8 +24,8 @@ export const StyledLoginBoxDiv = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 2rem;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border: 1px solid #971525;
+  box-shadow: 0 4px 8px #ece2e3(0, 0, 0, 0.1);
   gap: 1rem;
 `;
 export const StyledLoginButton = styled.div`
@@ -27,20 +37,20 @@ export const StyledLoginButton = styled.div`
   border-radius: 0.25rem;
   font-weight: bold;
   cursor: pointer;
-  background-color: #6e7681;
+  background-color: #ece2e3;
   color: white;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px #f71e39(0, 0, 0, 0.2);
   }
 `;
 
 export const StyledLoginHeader = styled.h2`
   font-size: 1.5rem;
   font-weight: 600;
-  color: #24292f;
+  color: #0b0506;
   margin-bottom: 1rem;
   text-align: center;
 `;
@@ -52,19 +62,19 @@ export const StyledLoginPromptDiv = styled.div`
   transform: translate(-50%, -50%);
   max-width: 400px;
   padding: 1.5rem 2rem;
-  background-color: #ffeb3b;
-  color: #333;
+  background-color: #ece2e3;
+  color: #0b0506;
   border-radius: 0.5rem;
   text-align: center;
   font-weight: 500;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px #f71e39(0, 0, 0, 0.15);
   z-index: 10;
 `;
 
 export const StyledRestrictionLink = styled(Link)`
   padding: 1px;
   margin-left: 0.25rem;
-  color: black;
+  color: #0b0506;
   font-weight: 600;
   text-decoration: underline;
   cursor: pointer;

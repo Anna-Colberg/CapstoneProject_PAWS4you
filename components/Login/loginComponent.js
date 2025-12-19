@@ -24,7 +24,7 @@ export default function LoginComponent() {
           >
             <Image
               src="/githubLogo.png"
-              alt="GitHub logo"
+              alt="Github logo"
               width={50}
               height={50}
             />
