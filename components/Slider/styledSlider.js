@@ -17,9 +17,10 @@ export const SliderWrapper = styled.div`
 
 export const Slide = styled(Link)`
   height: 220px;
-  background-color: black;
-  color: blue;
+  background-color: #ece2e3;
+  color: #971525;
   border-radius: 1rem;
+  border: solid 2px #0b0506;
   display: flex;
   align-items: center;
   justify-content: center;
