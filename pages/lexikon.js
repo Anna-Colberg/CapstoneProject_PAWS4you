@@ -1,6 +1,3 @@
-import BreedList from "@/components/BreedList";
-import { useMemo } from "react";
-import useSWR from "swr";
 import {
   LexikonStyledContainer,
   Title,
@@ -8,6 +5,9 @@ import {
   TitleWrapper,
   ImageWrapper,
 } from "./styledLexikon";
+import BreedList from "@/components/List/BreedList";
+import { useMemo } from "react";
+import useSWR from "swr";
 
 export default function Listhandler() {
   const { data: dogs, isLoading, error } = useSWR("/api/portraits");

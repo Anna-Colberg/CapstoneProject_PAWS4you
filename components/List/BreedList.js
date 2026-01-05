@@ -1,4 +1,4 @@
-import BreedCard from "./BreedCard";
+import BreedCard from "../Card/BreedCard";
 
 export default function BreedList({ dogs }) {
   if (!dogs || dogs.length === 0) {
@@ -13,6 +13,7 @@ export default function BreedList({ dogs }) {
             name={dog.name}
             description={dog.description}
             imageUrl={dog.imageUrl}
+            imageDetail={dog.imageDetail}
             fciNumber={dog.fciNumber}
             high={dog.high}
             imageDetail={dog.imageDetail}
