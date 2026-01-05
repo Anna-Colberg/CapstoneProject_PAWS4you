@@ -16,7 +16,6 @@ export default function App({
       <SWRConfig value={{ fetcher }}>
         <TopRightLogin />
         <Component {...pageProps} />
-        <Navigation />
       </SWRConfig>
     </SessionProvider>
   );

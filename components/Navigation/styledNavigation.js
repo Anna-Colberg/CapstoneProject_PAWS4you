@@ -6,13 +6,7 @@ export const NavigationWrapper = styled.nav`
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: var(--background-tertiary);
-  box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.1);
-  padding: 1rem 2rem;
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  background-color: #fdfd;
   z-index: 1000;
 `;
 
@@ -26,28 +20,13 @@ export const NavigationList = styled.ul`
   gap: 2rem;
 `;
 
-export const NavigationListItem = styled.li`
-  margin: 0;
-`;
-
 export const NavigationLink = styled(Link)`
   display: flex;
   border-radius: 999px;
- 
   justify-content: center;
   text-decoration: none;
-  color: ${({ $highlighted }) =>
-    $highlighted ? "var(--accent-foreground)" : "var(--background-secondary)"};
-  font-size: 0.9rem;
   font-weight: 500;
   padding: 0.5rem;
-  transition:
-    transform 0.15s ease,
-    filter 0.2s ease,
-    color 0.2s ease,
-    stroke 0.2s ease,
-    fill 0.2s ease;
-  
 
   svg {
     width: 32px;

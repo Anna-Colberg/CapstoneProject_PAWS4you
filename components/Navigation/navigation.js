@@ -1,10 +1,10 @@
 import {
   NavigationLink,
-  NavigationList,
-  NavigationListItem,
   NavigationWrapper,
-} from "./StyledNavigation";
+  NavigationList,
+} from "./styledNavigation";
 import { useRouter } from "next/router";
+
 
 
 export default function Navigation() {
@@ -12,38 +12,35 @@ export default function Navigation() {
   return (
     <NavigationWrapper>
       <NavigationList>
-        <NavigationListItem>
-          <NavigationLink
-            href="/createactivity"
-            $highlighted={router.pathname === "/createactivity"}
-          >
-           {/* ICON */}
-          </NavigationLink>
-        </NavigationListItem>
 
-        <NavigationListItem>
+       
+          <NavigationLink
+            href="/" $highlighted={router.pathname === "/"}>
+            <img src="/icons/home.svg" alt="Home" />
+          </NavigationLink>
+      
+
+
+      
           <NavigationLink href="/" $highlighted={router.pathname === "/"}>
-            {/* ICON */}
+            {<img src="/icons/favorite.svg" alt="Favorite" />}
           </NavigationLink>
-        </NavigationListItem>
+     
 
-        <NavigationListItem>
-          <NavigationLink
-            href="/favorite"
-            $highlighted={router.pathname === "/favorite"}
-          >
-            {/* ICON */}
-          </NavigationLink>
-        </NavigationListItem>
 
-        <NavigationListItem>          
-          <NavigationLink
-            href="/mapview"
-            $highlighted={router.pathname === "/mapview"}
-          >
-            {/* ICON */}
+          <NavigationLink href="/" $highlighted={router.pathname === "/"}>
+            {<img src="/icons/lexikon.svg" alt="Lexikon" />}
           </NavigationLink>
-        </NavigationListItem>
+ 
+
+
+    
+          <NavigationLink
+            href="/" $highlighted={router.pathname === "/"}>
+            {<img src="/icons/profil.svg" alt="Profil" />}
+          </NavigationLink>
+  
+
       </NavigationList>
     </NavigationWrapper>
   );
