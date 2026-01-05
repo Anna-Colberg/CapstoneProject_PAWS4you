@@ -1,10 +1,4 @@
-import {
-  LexikonStyledContainer,
-  Title,
-  Subtitle,
-  TitleWrapper,
-  CardWrapper,
-} from "./styledLexikon";
+import { LexikonStyledContainer, Title, Subtitle } from "./styledLexikon";
 import BreedList from "@/components/List/BreedList";
 import { useMemo } from "react";
 import useSWR from "swr";
