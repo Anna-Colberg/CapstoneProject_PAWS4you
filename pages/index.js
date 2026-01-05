@@ -1,17 +1,14 @@
 import { useRouter } from "next/router";
 import { StyledSuccessMessageDiv } from "@/components/Login/styledMessage";
 import { useSession } from "next-auth/react";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import useSWR from "swr";
 import Slider from "@/components/Slider/Slider";
 
-
 export default function HomePage() {
-  const {data: dogs, isLoading, error} = useSWR(`/api/portraits`)
+  const { data: dogs, isLoading, error } = useSWR(`/api/portraits`);
 
-
-const router = useRouter();
+  const router = useRouter();
   const { login } = router.query;
   const { data: session } = useSession();
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
@@ -30,7 +27,7 @@ const router = useRouter();
 
   return (
     <div>
-       {showSuccessMessage && (
+      {showSuccessMessage && (
         <StyledSuccessMessageDiv>
           Hello, {session?.user.name}!
         </StyledSuccessMessageDiv>
