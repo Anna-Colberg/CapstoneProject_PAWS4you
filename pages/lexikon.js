@@ -1,7 +1,7 @@
 import BreedList from "@/components/List/BreedList";
 import { useMemo } from "react";
 import useSWR from "swr";
-import { LexikonStyledContainer, Title, Subtitle } from "@/components/styledLexikon";
+import { StyledContainer, Title, Subtitle } from "@/components/styledPages";
 
 export default function Listhandler() {
   const { data: dogs, isLoading, error } = useSWR("/api/portraits");
@@ -16,11 +16,11 @@ export default function Listhandler() {
   if (!dogs || dogs.length === 0) return <p>No Dogs found.</p>;
 
   return (
-    <LexikonStyledContainer>
+    <StyledContainer>
       <Title>Lexikon</Title>
       <Subtitle>find your DOG</Subtitle>
       <BreedList dogs={sortedDogs} />
-    </LexikonStyledContainer>
+    </StyledContainer>
   );
 }
 
