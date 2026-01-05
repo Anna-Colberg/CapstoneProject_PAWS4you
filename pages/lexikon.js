@@ -1,4 +1,3 @@
-import { LexikonStyledContainer, Title, Subtitle } from "./styledLexikon";
 import BreedList from "@/components/List/BreedList";
 import { useMemo } from "react";
 import useSWR from "swr";
@@ -16,11 +15,11 @@ export default function Listhandler() {
   if (!dogs || dogs.length === 0) return <p>No Dogs found.</p>;
 
   return (
-    <LexikonStyledContainer>
-      <Title>Lexikon</Title>
-      <Subtitle>find your DOG</Subtitle>
+    <div>
+      <h1>Lexikon</h1>
+      <h2>find your DOG</h2>
       <BreedList dogs={sortedDogs} />
-    </LexikonStyledContainer>
+    </div>
   );
 }
 
