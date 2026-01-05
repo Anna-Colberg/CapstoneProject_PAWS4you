@@ -1,11 +1,17 @@
 import BreedList from "@/components/BreedList";
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import useSWR from "swr";
-
+import {
+  LexikonStyledContainer,
+  Title,
+  Subtitle,
+  TitleWrapper,
+  ImageWrapper,
+} from "./styledLexikon";
 
 export default function Listhandler() {
   const { data: dogs, isLoading, error } = useSWR("/api/portraits");
-  
+
   const sortedDogs = useMemo(() => {
     if (!dogs) return [];
     return dogs.slice().sort((a, b) => a.name.localeCompare(b.name));
@@ -14,20 +20,23 @@ export default function Listhandler() {
   if (isLoading) return <p>Load...</p>;
   if (error) return <p>Failed to load.</p>;
   if (!dogs || dogs.length === 0) return <p>No Dogs found.</p>;
- 
+
   return (
-    <div>
-      <h1>Lexikon</h1>
-      <h2>find your DOG</h2>
-      <BreedList dogs={sortedDogs} />
-    </div>
+    <LexikonStyledContainer>
+      <TitleWrapper>
+        <Title>Lexikon</Title>
+      </TitleWrapper>
+      <Subtitle>find your DOG</Subtitle>
+      <ImageWrapper>
+        <BreedList dogs={sortedDogs} />
+      </ImageWrapper>
+    </LexikonStyledContainer>
   );
 }
 
-
 //mit sortedDogs werden die Hunderassen nach dem Namen sortiert
-//React-Hook useMemo(für Berechnungen/ Sortieren = Berechnen) 
+//React-Hook useMemo(für Berechnungen/ Sortieren = Berechnen)
 //merkt sich dies und ändert sich nur, wenn Dogs neu gerendert wird.
 
-//.slice = Kopieren / .sort = Sortieren, Array wird neu dargestellt 
+//.slice = Kopieren / .sort = Sortieren, Array wird neu dargestellt
 //.localeCompare = Alphabetisches sortieren
