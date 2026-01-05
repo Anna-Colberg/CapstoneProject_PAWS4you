@@ -22,37 +22,13 @@ export const NavigationList = styled.ul`
 
 export const NavigationLink = styled(Link)`
   display: flex;
-  border-radius: 999px;
   justify-content: center;
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem;
 
-  svg {
-    width: 32px;
-    height: 32px;
-    overflow: visible;
-    display: block;
-  }
-
-  svg path, svg circle , svg line {
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-   
-    fill: none;
-    transition: stroke 0.2s ease, fill 0.2s ease;
-  }
-
   &:hover {
     transform: translateY(-1px);
-    filter: brightness(1.15);
-    color: var(--accent);    
+    filter: brightness(1.15); 
   }
-
-    &:hover svg path {
-    stroke: var(--accent);
-    fill: none;
-    }
 `;
