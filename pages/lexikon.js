@@ -3,7 +3,7 @@ import {
   Title,
   Subtitle,
   TitleWrapper,
-  ImageWrapper,
+  CardWrapper,
 } from "./styledLexikon";
 import BreedList from "@/components/List/BreedList";
 import { useMemo } from "react";
@@ -23,13 +23,9 @@ export default function Listhandler() {
 
   return (
     <LexikonStyledContainer>
-      <TitleWrapper>
-        <Title>Lexikon</Title>
-      </TitleWrapper>
+      <Title>Lexikon</Title>
       <Subtitle>find your DOG</Subtitle>
-      <ImageWrapper>
-        <BreedList dogs={sortedDogs} />
-      </ImageWrapper>
+      <BreedList dogs={sortedDogs} />
     </LexikonStyledContainer>
   );
 }

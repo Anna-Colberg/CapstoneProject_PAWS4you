@@ -10,12 +10,12 @@ export const LexikonStyledContainer = styled.div`
   box-shadow: 0 8px 20px rgb(0, 0, 0, 0.1);
 `;
 
-export const TitleWrapper = styled.div`
+export const TitleWrapper = styled.p`
   display: flex;
   justify-content: center;
 `;
 
-export const ImageWrapper = styled.div`
+export const CardWrapper = styled.p`
   display: flex;
   justify-content: center;
 `;
