@@ -1,8 +1,8 @@
 import Image from "next/image";
 
 
-export default function Detail({ dog, imageUrl }) {
-    const imageSrc = imageUrl || "/images/placeholder.jpg";
+export default function Detail({ dog, imageUrl, }) {
+    const imageSrc = imageUrl || "/images/placeholder.png";
 
   return (
     <>
