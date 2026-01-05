@@ -9,6 +9,7 @@ const portraitSchema = new Schema({
     groupsection: {type: String},
     high: {type: String},
     description: {type: String},
+    imageDetail: {type: String},
 });
 
 const Portraits = mongoose.models.Portraits || mongoose.model("Portraits", portraitSchema);
