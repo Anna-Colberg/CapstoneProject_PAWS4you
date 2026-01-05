@@ -28,3 +28,4 @@ export default async function eachPortraithandler(request, response) {
     return response.status(400).json({ status: "Invalid ID" });
   }
 }
+//export default function
