@@ -1,4 +1,4 @@
-import BreedList from "@/components/BreedList";
+import BreedList from "@/components/List/BreedList";
 import { useMemo, useState } from "react";
 import useSWR from "swr";
 

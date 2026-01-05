@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import { useEffect } from "react";
 import useSWR from "swr";
+import Slider from "@/components/Slider/Slider";
 
 
 export default function HomePage() {
@@ -36,6 +37,7 @@ const router = useRouter();
       )}
       <h1>PAWS4you</h1>
       <h2>Your Bestfriends and more !</h2>
+      <Slider />
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import BreedCard from "./BreedCard";
+import BreedCard from "../Card/BreedCard";
 
 export default function BreedList({ dogs }) {
   if (!dogs || dogs.length === 0) {
