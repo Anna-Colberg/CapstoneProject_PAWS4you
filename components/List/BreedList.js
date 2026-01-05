@@ -16,7 +16,6 @@ export default function BreedList({ dogs }) {
             imageDetail={dog.imageDetail}
             fciNumber={dog.fciNumber}
             high={dog.high}
-            imageDetail={dog.imageDetail}
           />
         </li>
       ))}
