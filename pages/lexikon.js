@@ -1,16 +1,28 @@
 import BreedList from "@/components/List/BreedList";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import useSWR from "swr";
 import { StyledContainer, Title, Subtitle } from "@/components/styledPages";
 import Navigation from "@/components/Navigation/navigation";
+import Searchbar from "@/components/Searchbar/filter";
 
 export default function Listhandler() {
   const { data: dogs, isLoading, error } = useSWR("/api/portraits");
+  const [search, setSearch] = useState("");
 
-  const sortedDogs = useMemo(() => {
+  const filteredAndSortedDogs = useMemo(() => {
     if (!dogs) return [];
-    return dogs.slice().sort((a, b) => a.name.localeCompare(b.name));
-  }, [dogs]);
+
+    const searchLower = search.toLowerCase();
+
+    return dogs
+      .filter((dog) => {
+        const name = dog.name?.toLowerCase() || "";
+        const high = dog.high?.toLowerCase() || "";
+
+        return name.includes(searchLower) || high.includes(searchLower);
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }, [dogs, search]);
 
   if (isLoading) return <p>Load...</p>;
   if (error) return <p>Failed to load.</p>;
@@ -18,12 +30,13 @@ export default function Listhandler() {
 
   return (
     <>
-    <StyledContainer>
-      <Title>Lexikon</Title>
-      <Subtitle>find your DOG</Subtitle>
-      <BreedList dogs={sortedDogs} />
-    </StyledContainer>
-    <Navigation />
+      <StyledContainer>
+        <Title>Lexikon</Title>
+        <Subtitle>find your DOG</Subtitle>
+        <Searchbar search={search} setSearch={setSearch} />
+        <BreedList dogs={filteredAndSortedDogs} />
+      </StyledContainer>
+      <Navigation />
     </>
   );
 }
