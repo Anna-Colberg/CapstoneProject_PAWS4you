@@ -5,7 +5,7 @@ export default function BreedCard({ _id, name, high, fciNumber, imageUrl }) {
   const imageSrc = imageUrl || "/images/placeholder.jpg";
 
   return (
-    <article classname="breed-card">
+    <article className="breed-card">
       <Link href={`/dogs/${_id}`}>
         <div className="image-wrapper">
           <Image

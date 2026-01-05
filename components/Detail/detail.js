@@ -1,19 +1,19 @@
-import Image from "next/image";
+import {
+  DetailStyledContainer,
+  Title,
+  ImageWrapper,
+  BreedImage,
+} from "./styledDetail";
 
-
-export default function Detail({ dog, imageUrl }) {
-    const imageSrc = imageUrl || "/images/placeholder.jpg";
+export default function Detail({ dog }) {
+  const imageSrc = dog.imageDetail || dog.imageUrl || "/images/placeholder.png";
 
   return (
-    <>
-      <h1>{dog.name}</h1>
-      <Image
-        src={imageSrc}
-        alt={dog.name}
-        width={200}
-        height={200}
-        className="breed-image"
-      />
+    <DetailStyledContainer>
+      <Title>{dog.name}</Title>
+      <ImageWrapper>
+        <BreedImage src={imageSrc} alt={dog.name} />
+      </ImageWrapper>
       <p>
         <strong>Schultergröße:</strong> {dog.high}
       </p>
@@ -23,7 +23,8 @@ export default function Detail({ dog, imageUrl }) {
       <p>
         <strong>Group/Section:</strong> {dog.groupsection}
       </p>
+
       <p>{dog.description}</p>
-    </>
+    </DetailStyledContainer>
   );
 }
