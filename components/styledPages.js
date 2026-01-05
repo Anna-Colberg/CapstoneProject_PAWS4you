@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LexikonStyledContainer = styled.div`
+export const StyledContainer = styled.div`
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
