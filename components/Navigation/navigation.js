@@ -4,11 +4,10 @@ import {
   NavigationList,
 } from "./styledNavigation";
 import { useRouter } from "next/router";
-import Home from "/public/icons/home.svg"
-import Lexikon from "/public/icons/lexikon.svg"
-import Favorite from "/public/icons/favorite.svg"
-import Profil from "/public/icons/profil.svg"
-
+import Home from "/public/icons/home.svg";
+import Lexikon from "/public/icons/lexikon.svg";
+import Favorite from "/public/icons/favorite.svg";
+import Profil from "/public/icons/profil.svg";
 
 export default function Navigation() {
   const router = useRouter();
@@ -25,7 +24,7 @@ export default function Navigation() {
 
 
       
-          <NavigationLink href="/" $highlighted={router.pathname === "/"}>
+          <NavigationLink href="/favorite" $highlighted={router.pathname === "/favorite" ? "active" : ""}>
             <Favorite width={30} height={30} />
           </NavigationLink>
      

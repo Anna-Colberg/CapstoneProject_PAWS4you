@@ -4,12 +4,16 @@ import Image from "next/image";
 
 export const Card = styled.article`
 display: grid;
-grid-template-columns: 1fr 220px;
+grid-template-columns: 1fr 200px;
 gap: 16px;
 align-items: start;
 position: relative;
-background-color: rgba(199, 121, 121, 1);
+background-color: rgba(219, 36, 36, 1);
 border-radius: 8px;
+
+@media screen and (max-width: 768px) {
+grid-template-columns: 1fr;
+}
 `;
 
 export const Tabline = styled.h3`
@@ -21,9 +25,14 @@ position: absolute;
 border-bottom: solid black;
 border-left: solid black;
 border-right: solid black;
-top: -18px;
-left: 30%;
+top: 50px;
+left: 50%;
 background-color: #fbbcbcff;
+
+@media screen and (max-width: 480) {
+font-size: 16px;
+left: 20%;
+}
 `;
 
 export const Info = styled.div`
@@ -53,4 +62,9 @@ export const ImageWrapper = styled(Image)`
 width: 200px;
 height: 200px;
 border-radius: 8px;
+
+@media screen and (max-width: 768px) {
+width: 100%;
+height: auto;
+}
 `;

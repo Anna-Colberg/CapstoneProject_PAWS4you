@@ -1,7 +1,7 @@
 import BreedCard from "../Card/BreedCard";
 import { List, ListItem } from "./styledBreedList";
 
-export default function BreedList({ dogs }) {
+export default function BreedList({ dogs, likedBreed, toggleLiked }) {
   if (!dogs || dogs.length === 0) {
     return <p>No Dogs found.</p>;
   }

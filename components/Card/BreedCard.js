@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Image from "next/image";
 import {
   Card,
   Tabline,
@@ -16,12 +15,8 @@ export default function BreedCard({ _id, name, high, fciNumber, imageUrl }) {
     <Card className="breed-card">
       <Link href={`/dogs/${_id}`}>
         <ImageWrapper src={imageSrc} alt={name} width={200} height={200} />
-        {<Tabline className="breed-name">{name}</Tabline>}
+        {<Tabline>{name}</Tabline>}
       </Link>
-      <Info>
-        <InfoLabel>Schultergröße:</InfoLabel> {high}
-        <InfoValue>FCI-Nummer:</InfoValue> {fciNumber}
-      </Info>
     </Card>
   );
 }

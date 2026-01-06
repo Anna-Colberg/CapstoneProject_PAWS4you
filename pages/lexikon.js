@@ -1,11 +1,11 @@
-import BreedList from "@/components/List/BreedList";
 import { useMemo, useState } from "react";
 import useSWR from "swr";
 import { StyledContainer, Title, Subtitle } from "@/components/styledPages";
 import Navigation from "@/components/Navigation/navigation";
 import Searchbar from "@/components/Searchbar/filter";
+import Slider from "@/components/Slider/Slider";
 
-export default function Listhandler() {
+export default function LexikonPage() {
   const { data: dogs, isLoading, error } = useSWR("/api/portraits");
   const [searchName, setSearchName] = useState("");
   const [searchHigh, setSearchHigh] = useState("");
@@ -44,7 +44,7 @@ export default function Listhandler() {
           searchHigh={searchHigh}
           setSearchHigh={setSearchHigh}
         />
-        <BreedList dogs={filteredAndSortedDogs} />
+        <Slider dogs={filteredAndSortedDogs} />
       </StyledContainer>
       <Navigation />
     </>

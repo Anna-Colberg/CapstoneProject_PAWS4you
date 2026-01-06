@@ -1,4 +1,4 @@
-import BookmarkIcon from "../icons/bookmark.svg";
+import Bookmark from "/public/icons/bookmark.svg";
 import { IconButton } from "./Styled_favoritebutton";
 
 export default function FavoriteButton({ _id, toggleLiked, isLiked }) {
@@ -9,7 +9,7 @@ export default function FavoriteButton({ _id, toggleLiked, isLiked }) {
       aria-label={isLiked ? "unlike" : "like"}
       $isLiked={isLiked}
     >
-      <BookmarkIcon
+      <Bookmark
         width={28}
         height={28} />
     </IconButton>
