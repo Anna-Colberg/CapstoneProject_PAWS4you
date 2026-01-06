@@ -39,7 +39,7 @@ export default function Navigation() {
 
     
           <NavigationLink
-            href="/" $highlighted={router.pathname === "/"}>
+            href="/profil" $highlighted={router.pathname === "/profil" ? "active" : ""}>
             <Profil width={30} height={30} />
           </NavigationLink>
   
