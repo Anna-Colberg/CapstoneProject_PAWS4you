@@ -14,27 +14,35 @@ export default function Navigation() {
   return (
     <NavigationWrapper>
       <NavigationList>
-        <NavigationLink
-          href="/"
-          $highlighted={router.pathname === "/" ? "active" : ""}
-        >
-          <Home width={30} height={30} />
-        </NavigationLink>
-        <NavigationLink
-          href="/favorite"
-          $highlighted={router.pathname === "/favorite" ? "active" : ""}
-        >
-          <Favorite width={30} height={30} />
-        </NavigationLink>
-        <NavigationLink
-          href="/lexikon"
-          $highlighted={router.pathname === "/lexikon" ? "active" : ""}
-        >
-          <Lexikon width={30} height={30} />
-        </NavigationLink>
-        <NavigationLink href="/" $highlighted={router.pathname === "/"}>
-          <Profil width={30} height={30} />
-        </NavigationLink>
+
+       
+          <NavigationLink
+            href="/" $highlighted={router.pathname === "/" ? "active" : ""}>
+            <Home width={30} height={30} />
+          </NavigationLink>
+      
+
+
+      
+          <NavigationLink href="/favorite" $highlighted={router.pathname === "/favorite" ? "active" : ""}>
+            <Favorite width={30} height={30} />
+          </NavigationLink>
+     
+
+
+          <NavigationLink href="/lexikon" $highlighted={router.pathname === "/lexikon" ? "active" : ""}>
+            <Lexikon width={30} height={30} />
+          </NavigationLink>
+ 
+
+
+    
+          <NavigationLink
+            href="/profil" $highlighted={router.pathname === "/profil" ? "active" : ""}>
+            <Profil width={30} height={30} />
+          </NavigationLink>
+  
+
       </NavigationList>
     </NavigationWrapper>
   );
