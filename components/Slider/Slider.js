@@ -17,6 +17,10 @@ export default function Slider() {
         <SwiperSlide>
           <Slide href="/lexikon">Lexikon</Slide>
         </SwiperSlide>
+
+        <SwiperSlide>
+          <Slide href="/favorite">Favorites</Slide>
+        </SwiperSlide>
       </Swiper>
     </SliderWrapper>
   );

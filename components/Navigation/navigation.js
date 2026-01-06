@@ -25,7 +25,7 @@ export default function Navigation() {
 
 
       
-          <NavigationLink href="/" $highlighted={router.pathname === "/"}>
+          <NavigationLink href="/favorite" $highlighted={router.pathname === "/favorite" ? "active" : ""}>
             <Favorite width={30} height={30} />
           </NavigationLink>
      
