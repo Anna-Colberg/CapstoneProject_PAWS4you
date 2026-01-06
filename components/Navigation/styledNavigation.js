@@ -6,29 +6,69 @@ export const NavigationWrapper = styled.nav`
   bottom: 0;
   left: 0;
   width: 100%;
-  background-color: #fdfd;
+  background-color: #ffff;
+  border-top: 2px solid #fdc2c2ff;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   z-index: 1000;
+  padding: 0.5rem 0;
 `;
 
 export const NavigationList = styled.ul`
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   margin: 0;
   padding: 1rem;
   list-style: none;
-  gap: 2rem;
 `;
 
 export const NavigationLink = styled(Link)`
   display: flex;
   justify-content: center;
+  align-items: center;
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem;
+  transition: transform 0.2s, filter 0.2s, color 0.2s;
+
+  background-color: ${({ $highlighted }) =>
+    $highlighted ? "#410404ff" : "transparent"};
+  border-radius: ${({ $highlighted }) => ($highlighted ? "50%" : "0")};
 
   &:hover {
-    transform: translateY(-1px);
-    filter: brightness(1.15); 
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+    background-color: transparent;
+    img {
+      filter: brightness(1.2);
+    }
+  }
+  &.active img {
+    filter: ${({ $highlighted }) =>
+      $highlighted ? "brightness(1.5)" : "brightness(1)"};
+    transition: filter 0.2s;
+
+    svg {
+      width: 32px;
+      height: 32px;
+      overflow: visible;
+      display: block;
+
+      &:hover svg path {
+        fill: none;
+      }
+    }
+
+    svg path,
+    svg circle,
+    svg line {
+      stroke: currentColor;
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+
+      fill: none;
+      transition: stroke 0.2s ease, fill 0.2s ease;
+    }
   }
 `;

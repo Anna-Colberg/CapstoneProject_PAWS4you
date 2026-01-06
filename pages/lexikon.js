@@ -1,16 +1,33 @@
 import BreedList from "@/components/List/BreedList";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import useSWR from "swr";
 import { StyledContainer, Title, Subtitle } from "@/components/styledPages";
 import Navigation from "@/components/Navigation/navigation";
+import Searchbar from "@/components/Searchbar/filter";
 
 export default function Listhandler() {
   const { data: dogs, isLoading, error } = useSWR("/api/portraits");
+  const [searchName, setSearchName] = useState("");
+  const [searchHigh, setSearchHigh] = useState("");
 
-  const sortedDogs = useMemo(() => {
+  const filteredAndSortedDogs = useMemo(() => {
     if (!dogs) return [];
-    return dogs.slice().sort((a, b) => a.name.localeCompare(b.name));
-  }, [dogs]);
+
+    const nameLower = searchName.toLowerCase();
+    const highLower = searchHigh.toLowerCase();
+
+    return dogs
+      .filter((dog) => {
+        const name = dog.name?.toLowerCase() || "";
+        const high = dog.high?.toLowerCase() || "";
+
+        const nameMatch = name.includes(nameLower);
+        const highMatch = high.includes(highLower);
+
+        return nameMatch && highMatch;
+      })
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }, [dogs, searchName, searchHigh]);
 
   if (isLoading) return <p>Load...</p>;
   if (error) return <p>Failed to load.</p>;
@@ -18,12 +35,18 @@ export default function Listhandler() {
 
   return (
     <>
-    <StyledContainer>
-      <Title>Lexikon</Title>
-      <Subtitle>find your DOG</Subtitle>
-      <BreedList dogs={sortedDogs} />
-    </StyledContainer>
-    <Navigation />
+      <StyledContainer>
+        <Title>Lexikon</Title>
+        <Subtitle>find your DOG</Subtitle>
+        <Searchbar
+          searchName={searchName}
+          setSearchName={setSearchName}
+          searchHigh={searchHigh}
+          setSearchHigh={setSearchHigh}
+        />
+        <BreedList dogs={filteredAndSortedDogs} />
+      </StyledContainer>
+      <Navigation />
     </>
   );
 }

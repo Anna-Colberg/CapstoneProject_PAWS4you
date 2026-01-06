@@ -1,13 +1,14 @@
 import BreedCard from "../Card/BreedCard";
+import { List, ListItem } from "./styledBreedList";
 
 export default function BreedList({ dogs }) {
   if (!dogs || dogs.length === 0) {
     return <p>No Dogs found.</p>;
   }
   return (
-    <ul>
+    <List>
       {dogs.map((dog) => (
-        <li key={dog._id}>
+        <ListItem key={dog._id}>
           <BreedCard
             _id={dog._id}
             name={dog.name}
@@ -17,8 +18,8 @@ export default function BreedList({ dogs }) {
             fciNumber={dog.fciNumber}
             high={dog.high}
           />
-        </li>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 }

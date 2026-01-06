@@ -1,30 +1,27 @@
 import Link from "next/link";
 import Image from "next/image";
+import {
+  Card,
+  Tabline,
+  Info,
+  InfoLabel,
+  InfoValue,
+  ImageWrapper,
+} from "./styledBreedCard";
 
 export default function BreedCard({ _id, name, high, fciNumber, imageUrl }) {
   const imageSrc = imageUrl || "/images/placeholder.jpg";
 
   return (
-    <article className="breed-card">
+    <Card className="breed-card">
       <Link href={`/dogs/${_id}`}>
-        <div className="image-wrapper">
-          <Image
-            src={imageSrc}
-            alt={name}
-            width={200}
-            height={200}
-            className="breed-image"
-          />
-        </div>
-
-        <h3 className="breed-name">{name}</h3>
+        <ImageWrapper src={imageSrc} alt={name} width={200} height={200} />
+        {<Tabline className="breed-name">{name}</Tabline>}
       </Link>
-      <p>
-        <strong>Schultergröße:</strong> {high}
-      </p>
-      <p>
-        <strong>FCI-Nummer:</strong> {fciNumber}
-      </p>
-    </article>
+      <Info>
+        <InfoLabel>Schultergröße:</InfoLabel> {high}
+        <InfoValue>FCI-Nummer:</InfoValue> {fciNumber}
+      </Info>
+    </Card>
   );
 }
