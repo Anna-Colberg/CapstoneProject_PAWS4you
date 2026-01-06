@@ -5,7 +5,6 @@ import Detail from "@/components/Detail/detail";
 export default function DetailPage() {
   const router = useRouter();
   const { id } = router.query;
-
   const [dog, setDog] = useState(null);
   const [error, setError] = useState(false);
   const [note, setNote] = useState("");

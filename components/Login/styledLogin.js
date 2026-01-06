@@ -20,6 +20,9 @@ export const StyledLoginBoxDiv = styled.div`
   gap: 1rem;
 `;
 export const StyledLoginButton = styled.div`
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -30,6 +33,7 @@ export const StyledLoginButton = styled.div`
   cursor: pointer;
   background-color: #ece2e3;
   color: white;
+  z-index: 100;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {

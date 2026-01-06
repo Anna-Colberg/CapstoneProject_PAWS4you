@@ -2,12 +2,18 @@ import { useRouter } from "next/router";
 import { StyledSuccessMessageDiv } from "@/components/Login/styledMessage";
 import { StyledContainer, Title, Subtitle } from "@/components/styledPages";
 import { useSession } from "next-auth/react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import useSWR from "swr";
-import Slider from "@/components/Slider/Slider";
+import Navigation from "@/components/Navigation/navigation";
+import Image from "next/image";
 
 export default function HomePage() {
   const { data: dogs, isLoading, error } = useSWR(`/api/portraits`);
+
+  const randomDogs = useMemo(() => {
+    if (!dogs) return [];
+    return [...dogs].sort(() => 0.5 - Math.random()).slice(0, 1);
+  }, [dogs]);
 
   const router = useRouter();
   const { login } = router.query;
@@ -35,7 +41,22 @@ export default function HomePage() {
       )}
       <Title>PAWS4you</Title>
       <Subtitle>Your Bestfriends and more !</Subtitle>
-      <Slider />
+      <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+        {randomDogs.map((dog) => (
+          <div
+            key={dog._id}
+            style={{ position: "relative", width: 180, height: 180 }}
+          >
+            <Image
+              src={dog.imageUrl}
+              alt={dog.name}
+              fill
+              style={{ objectFit: "cover", borderRadius: "12px" }}
+            />
+          </div>
+        ))}
+      </div>
+      <Navigation />
     </StyledContainer>
   );
 }
