@@ -30,23 +30,3 @@ export const Subtitle = styled.h2`
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 `;
-
-export const CancelButton = styled.button`
-  align-self: flex-end;
-  margin-top: 0%.75rem;
-  padding: 0.35rem 0.9rem;
-  border-radius: 999px;
-  border: 1px solid var(--alert);
-  background-color: transparent;
-  color: var(--alert);
-  font-size: 0.85rem;
-  cursor: pointer;
-  transition: background-color 0.15s ease, color 0.15s ease,
-    box-shadow 0.15s ease;
-
-  &:hover {
-    background-color: var(--alert-foreground);
-    color: var(--background);
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
-  }
-`;
