@@ -3,10 +3,11 @@ import Image from "next/image";
 
 
 export const Card = styled.article`
-display: grid;
-grid-template-columns: 1fr 200px;
+width: 220px;
+display: flex;
+flex-direction: column;
 gap: 16px;
-align-items: start;
+align-items: center;
 position: relative;
 background-color: rgba(219, 36, 36, 1);
 border-radius: 8px;
@@ -17,17 +18,20 @@ grid-template-columns: 1fr;
 `;
 
 export const Tabline = styled.h3`
-margin: 0;
-font-size: 18px;
+margin-top: 0.5rem;
+font-size: 1rem;
 color: #980202ad;
-font-weight: bold;
+font-weight: 600;
+text-align: center;
+line-height: 1.2;
 position: absolute;
 border-bottom: solid black;
 border-left: solid black;
 border-right: solid black;
-top: 50px;
-left: 50%;
+
 background-color: #fbbcbcff;
+word-break: break-word;
+max-width: 100%;
 
 @media screen and (max-width: 480) {
 font-size: 16px;
@@ -61,7 +65,15 @@ text-underline-offset: 3px;
 export const ImageWrapper = styled(Image)`
 width: 200px;
 height: 200px;
-border-radius: 8px;
+overflow: hidden;
+border-radius: 12px;
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
 
 @media screen and (max-width: 768px) {
 width: 100%;

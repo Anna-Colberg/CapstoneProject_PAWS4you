@@ -1,11 +1,18 @@
 import { useRouter } from "next/router";
 import { StyledSuccessMessageDiv } from "@/components/Login/styledMessage";
-import { StyledContainer, Title, Subtitle } from "@/components/styledPages";
+import {
+  StyledContainer,
+  Title,
+  Subtitle,
+  RandomDogsGrid,
+  RandomDogItem,
+  RandomDogImage,
+} from "@/components/styledPages";
 import { useSession } from "next-auth/react";
 import { useState, useEffect, useMemo } from "react";
 import useSWR from "swr";
 import Navigation from "@/components/Navigation/navigation";
-import Image from "next/image";
+import TopRightLogin from "@/components/Login/topRightLogin";
 
 export default function HomePage() {
   const { data: dogs, isLoading, error } = useSWR(`/api/portraits`);
@@ -40,22 +47,15 @@ export default function HomePage() {
         </StyledSuccessMessageDiv>
       )}
       <Title>PAWS4you</Title>
+      <TopRightLogin />
       <Subtitle>Your Bestfriends and more !</Subtitle>
-      <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+      <RandomDogsGrid>
         {randomDogs.map((dog) => (
-          <div
-            key={dog._id}
-            style={{ position: "relative", width: 180, height: 180 }}
-          >
-            <Image
-              src={dog.imageUrl}
-              alt={dog.name}
-              fill
-              style={{ objectFit: "cover", borderRadius: "12px" }}
-            />
-          </div>
+          <RandomDogItem key={dog._id}>
+            <RandomDogImage src={dog.imageUrl} alt={dog.name} fill />
+          </RandomDogItem>
         ))}
-      </div>
+      </RandomDogsGrid>
       <Navigation />
     </StyledContainer>
   );

@@ -1,20 +1,21 @@
 import styled from "styled-components";
+import Image from "next/image";
 
 export const StyledContainer = styled.div`
-  max-width: 800px;
+  max-width: 1200px;
+  width: 95%;
   margin: 2rem auto;
-  padding: 20rem;
+  padding: 2.5rem;
   background-color: aliceblue;
-  border: solid;
+  border: 2px solid;
   border-radius: 16px;
   box-shadow: 0 8px 20px rgb(0, 0, 0, 0.1);
 
   @media screen and (max-width: 1024px) {
-    max-width: 90%;
+    max-width: 95%;
   }
   @media screen and (max-width: 768px) {
     padding: 1.5rem;
-    margin: 1.5rem auto;
   }
   @media screen and (max-width: 480px) {
     padding: 1rem;
@@ -58,4 +59,29 @@ export const Subtitle = styled.h2`
   @media screen and (max-width: 480px){
   font-size: 1.1rem;    
   }
+`;
+
+export const RandomDogsGrid = styled.div`
+display: flex;
+gap: 16px;
+flex-wrap: wrap;
+`;
+
+export const RandomDogItem = styled.div`
+position: relative;
+width: 180px;
+height: 180px;
+border-radius: 14px;
+overflow: hidden;
+`;
+
+export const RandomDogImage = styled(Image)`
+width: 200px;
+height: 200px;
+border-radius: 14px;
+`;
+
+export const ContentWrapper = styled.div`
+max-width: 600px;
+margin: 0 auto;
 `;
