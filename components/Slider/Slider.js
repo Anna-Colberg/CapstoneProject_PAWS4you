@@ -5,7 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import BreedCard from "../Card/BreedCard";
 
-export default function Slider({ dogs }) {
+export default function Slider({ dogs, toggleFavorite, favoriteDogIds }) {
   if (!dogs || dogs.length === 0) {
     return <p>Keine Hunde gefunden</p>;
   }
@@ -26,6 +26,8 @@ export default function Slider({ dogs }) {
                 _id={dog._id}
                 name={dog.name}
                 imageUrl={dog.imageUrl}
+                toggleFavorite={toggleFavorite}
+                favoriteDogIds={favoriteDogIds}
               />
             </PortraitSlide>
           </SwiperSlide>
