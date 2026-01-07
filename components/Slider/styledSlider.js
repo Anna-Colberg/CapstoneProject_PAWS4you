@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export const SliderWrapper = styled.div`
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   
   .swiper {
-    padding-bottom: 30px;
+    padding-bottom: 40px;
   }
   .swiper-slider{
     display:flex;
@@ -19,9 +19,6 @@ export const SliderWrapper = styled.div`
     background-color: #333;
   }
 
-@media screen and (max-width: 768px) {
-  padding: 1.5rem;
-}
 @media screen and (max-width: 480px) {
   padding: 1rem;
 }

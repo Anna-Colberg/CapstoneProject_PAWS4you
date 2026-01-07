@@ -1,6 +1,6 @@
 import { useMemo, useState } from "react";
 import useSWR from "swr";
-import { StyledContainer, Title, Subtitle } from "@/components/styledPages";
+import { StyledContainer, Title, Subtitle, ContentWrapper } from "@/components/styledPages";
 import Navigation from "@/components/Navigation/navigation";
 import Searchbar from "@/components/Searchbar/filter";
 import Slider from "@/components/Slider/Slider";
@@ -36,6 +36,7 @@ export default function LexikonPage() {
   return (
     <>
       <StyledContainer>
+        <ContentWrapper>
         <Title>Lexikon</Title>
         <Subtitle>find your DOG</Subtitle>
         <Searchbar
@@ -44,6 +45,7 @@ export default function LexikonPage() {
           searchHigh={searchHigh}
           setSearchHigh={setSearchHigh}
         />
+        </ContentWrapper>
         <Slider dogs={filteredAndSortedDogs} />
       </StyledContainer>
       <Navigation />

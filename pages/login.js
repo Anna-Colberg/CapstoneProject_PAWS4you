@@ -8,7 +8,7 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Activity Planner</h1>
+      <h1>PAWS4you</h1>
 
       {error && (
         <StyledErrorMessageDiv>

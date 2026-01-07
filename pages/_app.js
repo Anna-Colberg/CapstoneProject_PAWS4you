@@ -13,7 +13,6 @@ export default function App({
     <SessionProvider session={session}>
       <GlobalStyle />
       <SWRConfig value={{ fetcher }}>
-        <TopRightLogin />
         <Component {...pageProps} />
       </SWRConfig>
     </SessionProvider>
