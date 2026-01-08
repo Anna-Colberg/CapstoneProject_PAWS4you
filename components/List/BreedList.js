@@ -4,7 +4,7 @@ import { List, ListItem } from "./styledBreedList";
 export default function BreedList({ dogs, favoriteDogIds, toggleFavorite }) {
 
 if (!dogs || dogs.length === 0) {
-  return <p>No Dogs found.</p>
+  return <p></p>
 }
 
   return (

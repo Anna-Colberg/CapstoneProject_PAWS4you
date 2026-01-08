@@ -1,4 +1,5 @@
 import { IconButton, StyledBookmark } from "../styledPages";
+import { Bone } from "lucide-react";
 
 export default function FavoriteButton({ _id, toggleFavorite, isFavorite }) {
   return (
@@ -8,7 +9,8 @@ export default function FavoriteButton({ _id, toggleFavorite, isFavorite }) {
       aria-label={isFavorite ? "unlike" : "like"}
       $isFavorite={isFavorite}
     >
-      <StyledBookmark $isFavorite={isFavorite} />
+      <Bone color={isFavorite ? "blue" : "black"}
+      strokeWidth={2}/>
     </IconButton>
   );
 }

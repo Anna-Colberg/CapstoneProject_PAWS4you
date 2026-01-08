@@ -1,5 +1,7 @@
+import BreedCard from "@/components/Card/BreedCard";
 import BreedList from "@/components/List/BreedList";
 import Navigation from "@/components/Navigation/navigation";
+import { Grid } from "@/components/styledFavorites";
 import { StyledContainer, Subtitle, Title } from "@/components/styledPages";
 import useSWR from "swr";
 
@@ -17,14 +19,20 @@ export default function FavoritePage({ favoriteDogIds, toggleFavorite }) {
       <StyledContainer>
         <Title>Favorites Page</Title>
         <Subtitle>your Favorites 🐾🎔</Subtitle>
+
         {favoriteDogs.length === 0 ? (
           <p>No favorites yet.</p>
         ) : (
-          <BreedList
-            dogs={favoriteDogs}
-            toggleFavorite={toggleFavorite}
-            favoriteDogIds={favoriteDogIds}
-          />
+          <Grid>
+            {favoriteDogs.map((dog) => (
+              <BreedCard
+                key={dog._id}
+                {...dog}
+                toggleFavorite={toggleFavorite}
+                favoriteDogIds={favoriteDogIds}
+              />
+            ))}
+          </Grid>
         )}
         <Navigation />
       </StyledContainer>
