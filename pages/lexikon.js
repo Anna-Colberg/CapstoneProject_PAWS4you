@@ -1,11 +1,16 @@
 import { useMemo, useState } from "react";
 import useSWR from "swr";
-import { StyledContainer, Title, Subtitle, ContentWrapper } from "@/components/styledPages";
+import {
+  StyledContainer,
+  Title,
+  Subtitle,
+  ContentWrapper,
+} from "@/components/styledPages";
 import Navigation from "@/components/Navigation/navigation";
 import Searchbar from "@/components/Searchbar/filter";
 import Slider from "@/components/Slider/Slider";
 
-export default function LexikonPage() {
+export default function LexikonPage({ toggleFavorite, favoriteDogIds }) {
   const { data: dogs, isLoading, error } = useSWR("/api/portraits");
   const [searchName, setSearchName] = useState("");
   const [searchHigh, setSearchHigh] = useState("");
@@ -37,16 +42,20 @@ export default function LexikonPage() {
     <>
       <StyledContainer>
         <ContentWrapper>
-        <Title>Lexikon</Title>
-        <Subtitle>find your DOG</Subtitle>
-        <Searchbar
-          searchName={searchName}
-          setSearchName={setSearchName}
-          searchHigh={searchHigh}
-          setSearchHigh={setSearchHigh}
-        />
+          <Title>Lexikon</Title>
+          <Subtitle>find your DOG</Subtitle>
+          <Searchbar
+            searchName={searchName}
+            setSearchName={setSearchName}
+            searchHigh={searchHigh}
+            setSearchHigh={setSearchHigh}
+          />
         </ContentWrapper>
-        <Slider dogs={filteredAndSortedDogs} />
+        <Slider
+          dogs={filteredAndSortedDogs}
+          toggleFavorite={toggleFavorite}
+          favoriteDogIds={favoriteDogIds}
+        />
       </StyledContainer>
       <Navigation />
     </>

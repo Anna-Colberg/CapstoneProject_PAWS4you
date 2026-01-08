@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import Bookmark from "/public/icons/bookmark.svg";
 
 export const StyledContainer = styled.div`
   max-width: 1200px;
@@ -84,4 +85,39 @@ border-radius: 14px;
 export const ContentWrapper = styled.div`
 max-width: 600px;
 margin: 0 auto;
+`;
+
+export const IconButton = styled.button`
+  background: transparent;
+  border: none;
+  padding: 0.25rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  svg {
+    transition: fill 0.2s ease, transform 0.15s ease;
+  }
+
+  svg path {
+    stroke: var(--accent);
+    fill: ${({ $isFavorite }) => ($isFavorite ? "#0000" : "none")};
+    transition: fill 0.2s ease, stroke 0.2s ease;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
+`;
+
+export const StyledBookmark = styled(Bookmark)`
+width: 28px;
+height: 28px;
+transition: fill 0.2s ease, transform 0.15s ease;
+
+path {
+  fill: ${({ $isFavorite}) => ($isFavorite ? "black" : "none")};
+  stroke: #0000;
+}
 `;

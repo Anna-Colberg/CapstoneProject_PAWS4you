@@ -13,8 +13,9 @@ import { useState, useEffect, useMemo } from "react";
 import useSWR from "swr";
 import Navigation from "@/components/Navigation/navigation";
 import TopRightLogin from "@/components/Login/topRightLogin";
+import BreedList from "@/components/List/BreedList";
 
-export default function HomePage() {
+export default function HomePage({ favoriteDogIds, toggleFavorite}) {
   const { data: dogs, isLoading, error } = useSWR(`/api/portraits`);
 
   const randomDogs = useMemo(() => {
@@ -55,6 +56,10 @@ export default function HomePage() {
             <RandomDogImage src={dog.imageUrl} alt={dog.name} fill />
           </RandomDogItem>
         ))}
+        <BreedList
+                    toggleFavorite={toggleFavorite}
+                    favoriteDogIds={favoriteDogIds}
+                    />
       </RandomDogsGrid>
       <Navigation />
     </StyledContainer>

@@ -1,17 +1,16 @@
-import Bookmark from "/public/icons/bookmark.svg";
-import { IconButton } from "./Styled_favoritebutton";
+import { IconButton, StyledBookmark } from "../styledPages";
+import { Bone } from "lucide-react";
 
-export default function FavoriteButton({ _id, toggleLiked, isLiked }) {
+export default function FavoriteButton({ _id, toggleFavorite, isFavorite }) {
   return (
     <IconButton
       type="button"
-      onClick={() => toggleLiked(_id)}
-      aria-label={isLiked ? "unlike" : "like"}
-      $isLiked={isLiked}
+      onClick={() => toggleFavorite(_id)}
+      aria-label={isFavorite ? "unlike" : "like"}
+      $isFavorite={isFavorite}
     >
-      <Bookmark
-        width={28}
-        height={28} />
+      <Bone color={isFavorite ? "blue" : "black"}
+      strokeWidth={2}/>
     </IconButton>
   );
 }
