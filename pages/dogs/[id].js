@@ -36,6 +36,10 @@ export default function DetailPage() {
     fetchDog();
   }, [id]);
 
+  const handleDeleteNotice = (idToDelete) => {
+    setNotices((prev) => prev.filter((notice) => notice.id !== idToDelete));
+  };
+
   const handleAddNotice = (newNotice) => {
     setNotices([...notices, newNotice]);
   };
@@ -52,7 +56,7 @@ export default function DetailPage() {
       <BackButton onClick={() => router.back()}> BACK</BackButton>
       <Detail dog={dog} />
       <NoticeInputForm dogId={id} onAddNotice={handleAddNotice} />
-      <NoticeOutputForm notices={notices} />
+      <NoticeOutputForm notices={notices} onDeleteNotice={handleDeleteNotice} />
     </>
   );
 }
