@@ -85,11 +85,12 @@ export const VerticalStroke = styled.hr`
 export const SendButton = styled.div`
   padding: 0.8rem 1.2rem;
   border-radius: 8px;
-  background: black;
-  color: white;
+  background: rgba(13, 178, 10, 0.84);
+  color: #000;
   border: none;
   cursor: pointer;
   font-size: 1rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
   &:hover {
     opacity: 0.7;
@@ -99,11 +100,12 @@ export const SendButton = styled.div`
  padding: 0.8rem 1.2rem;
  gap:2rem;
   border-radius: 8px;
-  background: black;
+  background: #000;
   color: white;
   border: none;
   cursor: pointer;
   font-size: 1rem;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
   &:hover {
     opacity: 0.7;
@@ -114,11 +116,12 @@ export const DeleteButton = styled.button`
  padding: 0.8rem 1.2rem;
  gap:2rem;
   border-radius: 8px;
-  background: black;
-  color: white;
+  background: #f548487c;
+  color: #000;
   border: none;
   cursor: pointer;
   font-size: 1rem;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 
   &:hover {
     opacity: 0.7;
