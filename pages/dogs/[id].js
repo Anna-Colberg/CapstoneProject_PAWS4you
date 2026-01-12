@@ -36,6 +36,7 @@ export default function DetailPage() {
     fetchDog();
   }, [id]);
 
+
   const handleDeleteNotice = (idToDelete) => {
     setNotices((prev) => prev.filter((notice) => notice.id !== idToDelete));
   };
@@ -48,15 +49,29 @@ export default function DetailPage() {
     return null;
   }
 
-  if (error) return <p> Hunderasse nicht gefunden !</p>;
-  if (!dog) return <p>Lade...</p>;
+
+  if (error) return <p> Dog Breeds not found !</p>;
+  if (!dog) return <p>Load...</p>;
+
 
   return (
     <>
       <BackButton onClick={() => router.back()}> BACK</BackButton>
       <Detail dog={dog} />
+
       <NoticeInputForm dogId={id} onAddNotice={handleAddNotice} />
       <NoticeOutputForm notices={notices} onDeleteNotice={handleDeleteNotice} />
+
+      <form>
+        <h3>Comments/Notice</h3>
+        <textarea
+          value={note}
+          onChange={(event) => setNote(event.target.value)}
+          rows={10}
+        />
+        <button type="submit">SUBMIT</button>
+      </form>
+
     </>
   );
 }

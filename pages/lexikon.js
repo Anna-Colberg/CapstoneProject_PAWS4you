@@ -62,7 +62,7 @@ export default function LexikonPage({ toggleFavorite, favoriteDogIds }) {
   );
 }
 
-//mit sortedDogs werden die Hunderassen nach dem Namen sortiert
+
 //React-Hook useMemo(für Berechnungen/ Sortieren = Berechnen)
 //merkt sich dies und ändert sich nur, wenn Dogs neu gerendert wird.
 
