@@ -4,6 +4,9 @@ import {
   OutputSection,
   VerticalStroke,
   DeleteButton,
+  Time,
+  NoticeText,
+  FormNotice,
 } from "./styledNotice";
 
 export default function NoticeOutputForm({ notices, onDeleteNotice }) {
@@ -17,8 +20,8 @@ export default function NoticeOutputForm({ notices, onDeleteNotice }) {
       <NoticeTitle>Notice ({notices.length})</NoticeTitle>
       {notices.map((notice) => (
         <OutputSection key={notice.id}>
-          <p>{notice.text}</p>
-          <p>{notice.time}</p>
+          <NoticeText>{notice.text}</NoticeText>
+          <Time>{notice.date}</Time>
           <DeleteButton onClick={() => onDeleteNotice(notice.id)}>
             Delete
           </DeleteButton>

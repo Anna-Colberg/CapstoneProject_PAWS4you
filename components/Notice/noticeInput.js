@@ -7,14 +7,21 @@ export default function NoticeInputForm({ onAddNotice, dogId }) {
   function handleSubmit(event) {
     event.preventDefault();
 
+const now = new Date();
+const date = now.toLocaleString([], {
+  day: "2-digit",
+  month: "2-digit",
+  year: "numeric",
+  hour: "2-digit",
+  minute: "2-digit",
+});
+
+
     onAddNotice({
       id: `${dogId}-${crypto.randomUUID()}`,
       dogId: dogId,
       text: notices,
-      time: new Date().toLocaleTimeString([], {
-        hour: "2-digit",
-        minute: "2-digit",
-      }),
+      date,
     });
 
     setNotices("");

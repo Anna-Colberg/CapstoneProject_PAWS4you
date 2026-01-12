@@ -127,3 +127,14 @@ export const DeleteButton = styled.button`
     opacity: 0.7;
   }
 `;
+export const NoticeText = styled.p`
+font-size: large;
+font-family: Verdana, Geneva, Tahoma, sans-serif;
+`;
+
+
+export const Time = styled.p`
+display: grid;
+text-align: end;
+font-family: 'Times New Roman', Times, serif;
+`;
