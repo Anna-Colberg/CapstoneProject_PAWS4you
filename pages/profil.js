@@ -50,6 +50,7 @@ export default function ProfilPage() {
         {myPets.map((pet) => (
           <div key={pet.id}>
             <strong>{pet.name}</strong> - {pet.species} - {pet.breed} - {pet.age} - {pet.needs} - Sick:{pet.sick} - Dead: {pet.dead}
+          <button type="button">Delete</button>
           </div>
         ))}
       </div>
