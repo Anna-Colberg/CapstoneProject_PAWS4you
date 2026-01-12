@@ -26,15 +26,15 @@ export default function DetailPage() {
     fetchDog();
   }, [id]);
 
-  if (error) return <p> Hunderasse nicht gefunden !</p>;
-  if (!dog) return <p>Lade...</p>;
+  if (error) return <p> Dog Breeds not found !</p>;
+  if (!dog) return <p>Load...</p>;
 
   return (
     <>
       <button onClick={() => router.back()}> BACK</button>
       <Detail dog={dog} />
       <form>
-        <h3>Kommentare/Notizen</h3>
+        <h3>Comments/Notice</h3>
         <textarea
           value={note}
           onChange={(event) => setNote(event.target.value)}

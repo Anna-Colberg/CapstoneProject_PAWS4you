@@ -43,7 +43,7 @@ export default function HomePage() {
     <StyledContainer>
       {showSuccessMessage && (
         <StyledSuccessMessageDiv>
-          Hello, {session?.user.name}!
+          Good Day, {session?.user.name}!
         </StyledSuccessMessageDiv>
       )}
       <Title>PAWS4you</Title>
