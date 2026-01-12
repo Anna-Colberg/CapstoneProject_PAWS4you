@@ -44,7 +44,7 @@ export default function HomePage({ favoriteDogIds, toggleFavorite}) {
     <StyledContainer>
       {showSuccessMessage && (
         <StyledSuccessMessageDiv>
-          Hello, {session?.user.name}!
+          Good Day, {session?.user.name}!
         </StyledSuccessMessageDiv>
       )}
       <Title>PAWS4you</Title>
