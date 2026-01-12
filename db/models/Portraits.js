@@ -1,17 +1,18 @@
 import mongoose from "mongoose";
 
-const {Schema} = mongoose;
+const { Schema } = mongoose;
 
 const portraitSchema = new Schema({
-    name: {type: String, required:true,},
-    imageUrl: {type: String},
-    fciNumber: {type: String},
-    groupsection: {type: String},
-    high: {type: String},
-    description: {type: String}, 
-    imageDetail: {type: String},
+  name: { type: String, required: true },
+  imageUrl: { type: String },
+  fciNumber: { type: String },
+  groupsection: { type: String },
+  high: { type: String },
+  description: { type: String },
+  imageDetail: { type: String },
 });
 
-const Portraits = mongoose.models.Portraits || mongoose.model("Portraits", portraitSchema);
+const Portraits =
+  mongoose.models.Portraits || mongoose.model("Portraits", portraitSchema);
 
 export default Portraits;
