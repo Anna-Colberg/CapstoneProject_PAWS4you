@@ -1,9 +1,23 @@
 import CreatePetForm from "@/components/Create/CreatePetForm";
+import {
+  Button,
+  CreateSection,
+  DeleteButton,
+  PetCard,
+  PetInfo,
+  PetList,
+  PetName,
+  SectionTitle,
+} from "@/components/Create/styledCreateForm";
 import Navigation from "@/components/Navigation/navigation";
-import { StyledContainer, Subtitle, Title } from "@/components/styledPages";
+import {
+  PageWrapper,
+  StyledContainer,
+  Subtitle,
+  Title,
+} from "@/components/styledPages";
 /* import { useSession } from "next-auth/react"; */
 import { useEffect, useState } from "react";
-import useLocalStorage from "use-local-storage";
 
 export default function ProfilPage() {
   /* const { data: session, status } = useSession(); */
@@ -11,49 +25,73 @@ export default function ProfilPage() {
   const [showForm, setShowForm] = useState(false);
   const [myPets, setMyPets] = useState([]);
 
-  useEffect(() => {
-    const storedPets = localStorage.getItem("myPets");
-    if (storedPets) {
-      setMyPets(JSON.parse(storedPets));
-    }
-  });
-
   /* if (status === "loading") return <p>Loading...</p>;
   if (!session) {
     return <p>You must be logged in to view this page.</p>;
   } */
 
-  function handleAddPet(pet) {
-    setMyPets((prev) => [
-      ...prev,
-      { ...pet, id: crypto?.randomUUID?.() || Date.now().toString() },
-    ]);
-    setShowForm(false);
+  useEffect(() => {
+    async function fetchPets() {
+      const response = await fetch(`/api/pets`);
+      const data = await response.json();
+      setMyPets(data);
+    }
+    fetchPets();
+  });
+
+  async function handleAddPet(pet) {
+    await fetch(`/api/pets`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(pet),
+    });
+    setMyPets((prev) => [...prev]);
+  }
+
+  async function handleDelete(id) {
+    await fetch(`/api/pets`, {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id }),
+    });
+    setMyPets((prev) => prev.filter((pet) => pet._id !== id));
   }
 
   return (
-    <StyledContainer>
-      <Title>myPAWS</Title>
-      <Subtitle>My Dogs/Cats/Pets/...</Subtitle>
-      <h3>Test User`s Profile</h3>
-      <Navigation />
+    <PageWrapper>
+      <StyledContainer>
+        <Title>myPAWS</Title>
+        <Subtitle>My Dogs/Cats/Pets/...</Subtitle>
+        <h3>Test User`s Profile</h3>
+        <Navigation />
 
-      <h4>Create myPAWS</h4>
-      <button onClick={() => setShowForm((prev) => !prev)}>
-        {showForm ? "Cancel" : "+"}
-      </button>
+        <CreateSection>
+          <SectionTitle>Create myPAWS</SectionTitle>
+          <Button onClick={() => setShowForm((prev) => !prev)}>
+            {showForm ? "Cancel" : "+"}
+          </Button>
+        </CreateSection>
 
-      {showForm && <CreatePetForm onAddPet={handleAddPet} />}
+        {showForm && <CreatePetForm onAddPet={handleAddPet} />}
 
-      <div>
         {myPets.length === 0 && <p> Not addet Pets.</p>}
-        {myPets.map((pet) => (
-          <div key={pet.id}>
-            <strong>{pet.name}</strong> - {pet.species} - {pet.breed} - {pet.age} - {pet.needs} - Sick:{pet.sick} - Dead: {pet.dead}
-          <button type="button">Delete</button>
-          </div>
-        ))}
-      </div>
-    </StyledContainer>
+        <PetList>
+          {myPets.map((pet) => (
+            <PetCard key={pet.id}>
+              <PetName>{pet.name}</PetName>
+              <PetInfo>Species : {pet.species}</PetInfo>
+              <PetInfo>Breed : {pet.breed} </PetInfo>
+              <PetInfo>Age : {pet.age}</PetInfo>
+              <PetInfo>Needs : {pet.needs}</PetInfo>
+              <PetInfo>Sick : {pet.sick}</PetInfo>
+              <PetInfo>Dead : {pet.dead}</PetInfo>
+              <DeleteButton type="button" onClick={() => handleDelete(pet._id)}>
+                Delete
+              </DeleteButton>
+            </PetCard>
+          ))}
+        </PetList>
+      </StyledContainer>
+    </PageWrapper>
   );
 }

@@ -1,9 +1,16 @@
 import styled from "styled-components";
 
+export const PageWrapper = styled.div`
+  min-height: 100vh;
+  padding-bottom: 90px;
+`;
+
 export const StyledContainer = styled.div`
   max-width: 800px;
   margin: 2rem auto;
   padding: 2rem;
+  padding-bottom: calc()(2rem+80px);
+
   background-color: aliceblue;
   border: solid;
   border-radius: 16px;

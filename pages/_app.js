@@ -1,7 +1,6 @@
 import { SessionProvider } from "next-auth/react";
 import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
-import Navigation from "@/components/Navigation/navigation";
 import TopRightLogin from "@/components/Login/topRightLogin";
 
 const fetcher = (url) => fetch(url).then((response) => response.json());
