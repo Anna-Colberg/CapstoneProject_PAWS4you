@@ -151,10 +151,4 @@ export const VerticalStroke = styled.hr`
   width: 90%;
   margin: 20px auto;
 `;
-export const ImagePet = styled(Image)`
-width: 150px; 
-height: 150px; 
-object-fit: cover; 
-border-radius: 8px; 
-margin-bottom: 10px;
-`;
+
