@@ -59,16 +59,6 @@ export default function DetailPage() {
 
       <NoticeInputForm dogId={id} onAddNotice={handleAddNotice} />
       <NoticeOutputForm notices={notices} onDeleteNotice={handleDeleteNotice} />
-
-      <form>
-        <h3>Comments/Notice</h3>
-        <textarea
-          value={note}
-          onChange={(event) => setNote(event.target.value)}
-          rows={10}
-        />
-        <button type="submit">SUBMIT</button>
-      </form>
     </PageWrapper>
   );
 }
