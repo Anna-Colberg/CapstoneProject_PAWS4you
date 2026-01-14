@@ -44,20 +44,28 @@ export const NavigationLink = styled(Link)`
   background-color: ${({ $highlighted }) =>
     $highlighted ? "#410404ff" : "transparent"};
   border-radius: ${({ $highlighted }) => ($highlighted ? "50%" : "0")};
-
-  &:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.2);
-    background-color: transparent;
-
-    img {
-      filter: brightness(1.2);
-    }
+  svg {
+    transition: fill 0.2s ease, transform 0.15s ease;
   }
-@media screen and (max-width: 480px) {
-  font-size: 14px;
-  padding: 0.4rem;
-}
+
+  svg path {
+    stroke: var(--accent);
+    fill: ${({ $isFavorite }) => ($isFavorite ? "#0000" : "none")};
+    transition: fill 0.2s ease, stroke 0.2s ease;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
+
+  img {
+    filter: brightness(1.2);
+  }
+
+  @media screen and (max-width: 480px) {
+    font-size: 14px;
+    padding: 0.4rem;
+  }
 
   &.active img {
     filter: ${({ $highlighted }) =>
