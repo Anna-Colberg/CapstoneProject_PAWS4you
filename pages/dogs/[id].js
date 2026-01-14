@@ -5,6 +5,7 @@ import { BackButton } from "@/components/Notice/styledNotice";
 import NoticeInputForm from "@/components/Notice/noticeInput";
 import NoticeOutputForm from "@/components/Notice/noticeOutput";
 import useLocalStorageState from "use-local-storage-state";
+import { PageWrapper } from "@/components/styledPages";
 
 export default function DetailPage() {
   const router = useRouter();
@@ -36,7 +37,6 @@ export default function DetailPage() {
     fetchDog();
   }, [id]);
 
-
   const handleDeleteNotice = (idToDelete) => {
     setNotices((prev) => prev.filter((notice) => notice.id !== idToDelete));
   };
@@ -49,18 +49,16 @@ export default function DetailPage() {
     return null;
   }
 
-
   if (error) return <p> Dog Breeds not found !</p>;
   if (!dog) return <p>Load...</p>;
 
-
   return (
-    <>
+    <PageWrapper>
       <BackButton onClick={() => router.back()}> BACK</BackButton>
       <Detail dog={dog} />
 
       <NoticeInputForm dogId={id} onAddNotice={handleAddNotice} />
       <NoticeOutputForm notices={notices} onDeleteNotice={handleDeleteNotice} />
-    </>
+    </PageWrapper>
   );
 }

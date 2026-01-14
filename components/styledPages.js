@@ -2,6 +2,11 @@ import styled from "styled-components";
 import Image from "next/image";
 import Bookmark from "/public/icons/bookmark.svg";
 
+
+export const PageWrapper = styled.div`
+  min-height: 100vh;
+  padding-bottom: 90px;
+`;
 export const StyledContainer = styled.div`
   max-width: 1200px;
   width: 95%;

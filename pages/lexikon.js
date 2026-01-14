@@ -5,6 +5,7 @@ import {
   Title,
   Subtitle,
   ContentWrapper,
+  PageWrapper,
 } from "@/components/styledPages";
 import Navigation from "@/components/Navigation/navigation";
 import Searchbar from "@/components/Searchbar/filter";
@@ -39,7 +40,7 @@ export default function LexikonPage({ toggleFavorite, favoriteDogIds }) {
   if (!dogs || dogs.length === 0) return <p>No Dogs found.</p>;
 
   return (
-    <>
+    <PageWrapper>
       <StyledContainer>
         <ContentWrapper>
           <Title>Lexikon</Title>
@@ -58,7 +59,7 @@ export default function LexikonPage({ toggleFavorite, favoriteDogIds }) {
         />
       </StyledContainer>
       <Navigation />
-    </>
+    </PageWrapper>
   );
 }
 
