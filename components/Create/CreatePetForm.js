@@ -1,44 +1,85 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   AddButton,
   CreateInput,
   CreateLabel,
   FormGroup,
   FormWrapper,
-  ImagePet,
   RadioGroup,
   RadioLabel,
   VerticalStroke,
 } from "./styledCreateForm";
 
-export default function CreatePetForm({ onAddPet }) {
+export default function CreatePetForm({ onAddPet, onSaveEdit, editingPet }) {
   const [name, setName] = useState("");
   const [species, setSpecies] = useState("");
   const [breed, setBreed] = useState("");
-  const [age, setAge] = useState(0);
+  const [age, setAge] = useState("");
   const [needs, setNeeds] = useState("");
   const [sick, setSick] = useState("");
   const [dead, setDead] = useState("no");
- 
+
+  function handleAgeChange(event) {
+    const value = event.target.value;
+
+    if (value === "") {
+      setAge("");
+      return;
+    }
+    const numberValue = Number(value);
+    if (numberValue < 0) {
+      setAge(0);
+    } else if (numberValue > 20) {
+      setAge(20);
+    } else {
+      setAge(numberValue);
+    }
+  }
+
+  useEffect(() => {
+    if (editingPet) {
+      setName(editingPet.name || "");
+      setSpecies(editingPet.species || "");
+      setBreed(editingPet.breed || "");
+      setAge(editingPet.age || 0);
+      setNeeds(editingPet.needs || "");
+      setSick(editingPet.sick || "no");
+      setDead(editingPet.dead || "no");
+    }
+  }, [editingPet]);
+
   function handleSubmit(event) {
     event.preventDefault();
-    onAddPet({
-      name,
-      species,
-      breed,
-      age: Number(age),
-      needs,
-      sick,
-      dead,
-    });
+
+    if (editingPet) {
+      onSaveEdit({
+        ...editingPet,
+        name,
+        species,
+        breed,
+        age: Number(age),
+        needs,
+        sick,
+        dead,
+      });
+    } else {
+      onAddPet({
+        name,
+        species,
+        breed,
+        age: Number(age),
+        needs,
+        sick,
+        dead,
+      });
+    }
     setName("");
     setSpecies("");
     setBreed("");
-    setAge("");
+    setAge(0);
     setNeeds("");
     setSick("no");
     setDead("no");
-    setImage("/images/placeholder.jpg");
   }
 
   return (
@@ -82,7 +123,9 @@ export default function CreatePetForm({ onAddPet }) {
           type="number"
           placeholder="Age"
           value={age}
-          onChange={(event) => setAge(Number(event.target.value))}
+          min={0}
+          max={20}
+          onChange={handleAgeChange}
           required
         />
       </FormGroup>
@@ -152,7 +195,9 @@ export default function CreatePetForm({ onAddPet }) {
         </RadioGroup>
       </FormGroup>
 
-      <AddButton type="submit">Add NEW Pet</AddButton>
+      <AddButton type="submit">
+        {editingPet ? "Save changes" : "Add NEW Pet"}
+      </AddButton>
     </FormWrapper>
   );
 }

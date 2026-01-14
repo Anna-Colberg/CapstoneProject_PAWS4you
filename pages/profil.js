@@ -3,6 +3,7 @@ import {
   Button,
   CreateSection,
   DeleteButton,
+  EditButton,
   PetCard,
   PetInfo,
   PetList,
@@ -20,10 +21,16 @@ import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 export default function ProfilPage() {
-  const { data: session, status } = useSession();
+  /* const { data: session, status } = useSession(); */
 
   const [showForm, setShowForm] = useState(false);
   const [myPets, setMyPets] = useState([]);
+  const [editingPet, setEditingPet] = useState(null);
+
+  function handleCancelForm() {
+    setShowForm(false);
+    setEditingPet(null);
+  }
 
   useEffect(() => {
     async function fetchPets() {
@@ -32,22 +39,21 @@ export default function ProfilPage() {
       setMyPets(data);
     }
     fetchPets();
-  });
+  }, []);
 
-
-  if (status === "loading") return <p>Loading...</p>;
+  /*   if (status === "loading") return <p>Loading...</p>;
   if (!session) {
     return <p>You must be logged in to view this page.</p>;
-  }
+  } */
 
-  
   async function handleAddPet(pet) {
-    await fetch(`/api/pets`, {
+    const response = await fetch(`/api/pets`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(pet),
     });
-    setMyPets((prev) => [...prev]);
+    const newPet = await response.json();
+    setMyPets((prev) => [...prev, newPet]);
   }
 
   async function handleDelete(id) {
@@ -57,6 +63,27 @@ export default function ProfilPage() {
       body: JSON.stringify({ id }),
     });
     setMyPets((prev) => prev.filter((pet) => pet._id !== id));
+  }
+
+  async function handleEdit(pet) {
+    setEditingPet(pet);
+    setShowForm(true);
+  }
+
+  async function handleSaveEdit(updatedPet) {
+    const response = await fetch(`/api/pets/${updatedPet._id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedPet),
+    });
+
+    const savedPet = await response.json();
+    setMyPets((prev) =>
+      prev.map((pet) => (pet._id === savedPet._id ? savedPet : pet))
+    );
+
+    setEditingPet(null);
+    setShowForm(false);
   }
 
   return (
@@ -69,12 +96,27 @@ export default function ProfilPage() {
 
         <CreateSection>
           <SectionTitle>Create myPAWS</SectionTitle>
-          <Button onClick={() => setShowForm((prev) => !prev)}>
+       {   <Button
+            onClick={() => {
+              if (showForm) {
+                handleCancelForm();
+              } else {
+                setEditingPet(null);
+                setShowForm(true);
+              }
+            }}
+          >
             {showForm ? "Cancel" : "+"}
-          </Button>
+          </Button>}
         </CreateSection>
 
-        {showForm && <CreatePetForm onAddPet={handleAddPet} />}
+        {showForm && (
+          <CreatePetForm
+            onAddPet={handleAddPet}
+            onSaveEdit={handleSaveEdit}
+            editingPet={editingPet}
+          />
+        )}
 
         {myPets.length === 0 && <p> Not addet Pets.</p>}
         <PetList>
@@ -90,6 +132,9 @@ export default function ProfilPage() {
               <DeleteButton type="button" onClick={() => handleDelete(pet._id)}>
                 Delete
               </DeleteButton>
+              <EditButton type="button" onClick={() => handleEdit(pet)}>
+                Edit
+              </EditButton>
             </PetCard>
           ))}
         </PetList>

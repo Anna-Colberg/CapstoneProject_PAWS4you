@@ -28,5 +28,19 @@ export default async function newPetsHandler(request, response) {
     }
   }
 
+  if (request.method === "PUT") {
+    try {
+      const updatedPet = request.body;
+      const pet = await Pets.findByIdAndUpdate(
+        updatedPet._id,
+        updatedPet,
+        {new: true}
+      );
+      return response.status(200).json(pet);
+    } catch (error) {
+      return response.status(400).json({ status: "Could not update pet"});
+    }
+  }
+
   return response.status(405).json({ status: "Method not allowed" });
 }
