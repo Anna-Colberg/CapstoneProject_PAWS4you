@@ -7,6 +7,7 @@ import {
   RandomDogsGrid,
   RandomDogItem,
   RandomDogImage,
+  PageWrapper,
 } from "@/components/styledPages";
 import { useSession } from "next-auth/react";
 import { useState, useEffect, useMemo } from "react";
@@ -15,7 +16,7 @@ import Navigation from "@/components/Navigation/navigation";
 import TopRightLogin from "@/components/Login/topRightLogin";
 import BreedList from "@/components/List/BreedList";
 
-export default function HomePage({ favoriteDogIds, toggleFavorite}) {
+export default function HomePage({ favoriteDogIds, toggleFavorite }) {
   const { data: dogs, isLoading, error } = useSWR(`/api/portraits`);
 
   const randomDogs = useMemo(() => {
@@ -41,27 +42,29 @@ export default function HomePage({ favoriteDogIds, toggleFavorite}) {
   if (!dogs) return <p>No portraits and dogs found.</p>;
 
   return (
-    <StyledContainer>
-      {showSuccessMessage && (
-        <StyledSuccessMessageDiv>
-          Good Day, {session?.user.name}!
-        </StyledSuccessMessageDiv>
-      )}
-      <Title>PAWS4you</Title>
-      <TopRightLogin />
-      <Subtitle>Your Bestfriends and more !</Subtitle>
-      <RandomDogsGrid>
-        {randomDogs.map((dog) => (
-          <RandomDogItem key={dog._id}>
-            <RandomDogImage src={dog.imageUrl} alt={dog.name} fill />
-          </RandomDogItem>
-        ))}
-        <BreedList
-                    toggleFavorite={toggleFavorite}
-                    favoriteDogIds={favoriteDogIds}
-                    />
-      </RandomDogsGrid>
-      <Navigation />
-    </StyledContainer>
+    <PageWrapper>
+      <StyledContainer>
+        {showSuccessMessage && (
+          <StyledSuccessMessageDiv>
+            Good Day, {session?.user.name}!
+          </StyledSuccessMessageDiv>
+        )}
+        <Title>PAWS4you</Title>
+        <TopRightLogin />
+        <Subtitle>Your Bestfriends and more !</Subtitle>
+        <RandomDogsGrid>
+          {randomDogs.map((dog) => (
+            <RandomDogItem key={dog._id}>
+              <RandomDogImage src={dog.imageUrl} alt={dog.name} fill />
+            </RandomDogItem>
+          ))}
+          <BreedList
+            toggleFavorite={toggleFavorite}
+            favoriteDogIds={favoriteDogIds}
+          />
+        </RandomDogsGrid>
+        <Navigation />
+      </StyledContainer>
+    </PageWrapper>
   );
 }

@@ -2,7 +2,7 @@ import BreedCard from "@/components/Card/BreedCard";
 import BreedList from "@/components/List/BreedList";
 import Navigation from "@/components/Navigation/navigation";
 import { Grid } from "@/components/styledFavorites";
-import { StyledContainer, Subtitle, Title } from "@/components/styledPages";
+import { PageWrapper, StyledContainer, Subtitle, Title } from "@/components/styledPages";
 import useSWR from "swr";
 
 export default function FavoritePage({ favoriteDogIds, toggleFavorite }) {
@@ -15,7 +15,7 @@ export default function FavoritePage({ favoriteDogIds, toggleFavorite }) {
   const favoriteDogs = dogs.filter((dog) => favoriteDogIds?.includes(dog._id));
 
   return (
-    <>
+    <PageWrapper>
       <StyledContainer>
         <Title>Favorites Page</Title>
         <Subtitle>your Favorites 🐾🎔</Subtitle>
@@ -36,6 +36,6 @@ export default function FavoritePage({ favoriteDogIds, toggleFavorite }) {
         )}
         <Navigation />
       </StyledContainer>
-    </>
+    </PageWrapper>
   );
 }
