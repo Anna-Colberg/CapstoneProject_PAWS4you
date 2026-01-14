@@ -16,19 +16,14 @@ import {
   Subtitle,
   Title,
 } from "@/components/styledPages";
-/* import { useSession } from "next-auth/react"; */
+import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 
 export default function ProfilPage() {
-  /* const { data: session, status } = useSession(); */
+  const { data: session, status } = useSession();
 
   const [showForm, setShowForm] = useState(false);
   const [myPets, setMyPets] = useState([]);
-
-  /* if (status === "loading") return <p>Loading...</p>;
-  if (!session) {
-    return <p>You must be logged in to view this page.</p>;
-  } */
 
   useEffect(() => {
     async function fetchPets() {
@@ -39,6 +34,13 @@ export default function ProfilPage() {
     fetchPets();
   });
 
+
+  if (status === "loading") return <p>Loading...</p>;
+  if (!session) {
+    return <p>You must be logged in to view this page.</p>;
+  }
+
+  
   async function handleAddPet(pet) {
     await fetch(`/api/pets`, {
       method: "POST",
