@@ -1,10 +1,12 @@
 import BreedCard from "../Card/BreedCard";
 import { List, ListItem } from "./styledBreedList";
 
-export default function BreedList({ dogs }) {
-  if (!dogs || dogs.length === 0) {
-    return <p>No Dogs found.</p>;
-  }
+export default function BreedList({ dogs, favoriteDogIds, toggleFavorite }) {
+
+if (!dogs || dogs.length === 0) {
+  return <p></p>
+}
+
   return (
     <List>
       {dogs.map((dog) => (
@@ -17,6 +19,8 @@ export default function BreedList({ dogs }) {
             imageDetail={dog.imageDetail}
             fciNumber={dog.fciNumber}
             high={dog.high}
+            toggleFavorite={toggleFavorite}
+            favoriteDogIds={favoriteDogIds}
           />
         </ListItem>
       ))}

@@ -1,11 +1,17 @@
-import BreedList from "@/components/List/BreedList";
 import { useMemo, useState } from "react";
 import useSWR from "swr";
-import { StyledContainer, Title, Subtitle } from "@/components/styledPages";
+import {
+  StyledContainer,
+  Title,
+  Subtitle,
+  ContentWrapper,
+  PageWrapper,
+} from "@/components/styledPages";
 import Navigation from "@/components/Navigation/navigation";
 import Searchbar from "@/components/Searchbar/filter";
+import Slider from "@/components/Slider/Slider";
 
-export default function Listhandler() {
+export default function LexikonPage({ toggleFavorite, favoriteDogIds }) {
   const { data: dogs, isLoading, error } = useSWR("/api/portraits");
   const [searchName, setSearchName] = useState("");
   const [searchHigh, setSearchHigh] = useState("");
@@ -34,24 +40,30 @@ export default function Listhandler() {
   if (!dogs || dogs.length === 0) return <p>No Dogs found.</p>;
 
   return (
-    <>
+    <PageWrapper>
       <StyledContainer>
-        <Title>Lexikon</Title>
-        <Subtitle>find your DOG</Subtitle>
-        <Searchbar
-          searchName={searchName}
-          setSearchName={setSearchName}
-          searchHigh={searchHigh}
-          setSearchHigh={setSearchHigh}
+        <ContentWrapper>
+          <Title>Lexikon</Title>
+          <Subtitle>find your DOG</Subtitle>
+          <Searchbar
+            searchName={searchName}
+            setSearchName={setSearchName}
+            searchHigh={searchHigh}
+            setSearchHigh={setSearchHigh}
+          />
+        </ContentWrapper>
+        <Slider
+          dogs={filteredAndSortedDogs}
+          toggleFavorite={toggleFavorite}
+          favoriteDogIds={favoriteDogIds}
         />
-        <BreedList dogs={filteredAndSortedDogs} />
       </StyledContainer>
       <Navigation />
-    </>
+    </PageWrapper>
   );
 }
 
-//mit sortedDogs werden die Hunderassen nach dem Namen sortiert
+
 //React-Hook useMemo(für Berechnungen/ Sortieren = Berechnen)
 //merkt sich dies und ändert sich nur, wenn Dogs neu gerendert wird.
 

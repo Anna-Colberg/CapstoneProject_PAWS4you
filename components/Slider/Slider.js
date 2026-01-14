@@ -1,10 +1,15 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination } from "swiper/modules";
-import { SliderWrapper, Slide } from "./styledSlider";
+import { PortraitSlide, SliderWrapper } from "./styledSlider";
 import "swiper/css";
 import "swiper/css/pagination";
+import BreedCard from "../Card/BreedCard";
 
-export default function Slider() {
+export default function Slider({ dogs, toggleFavorite, favoriteDogIds }) {
+  if (!dogs || dogs.length === 0) {
+    return <p>Keine Hunde gefunden</p>;
+  }
+
   return (
     <SliderWrapper>
       <Swiper
@@ -14,9 +19,19 @@ export default function Slider() {
         spaceBetween={20}
         pagination={{ clickable: true }}
       >
-        <SwiperSlide>
-          <Slide href="/lexikon">Lexikon</Slide>
-        </SwiperSlide>
+        {dogs.map((dog) => (
+          <SwiperSlide key={dog._id}>
+            <PortraitSlide>
+              <BreedCard
+                _id={dog._id}
+                name={dog.name}
+                imageUrl={dog.imageUrl}
+                toggleFavorite={toggleFavorite}
+                favoriteDogIds={favoriteDogIds}
+              />
+            </PortraitSlide>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </SliderWrapper>
   );

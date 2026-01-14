@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { FormWrapper, Form, Input, SubmitButton, CancelButton } from "./styledFilter";
+import {
+  FormWrapper,
+  Form,
+  Input,
+  SubmitButton,
+  CancelButton,
+} from "./styledFilter";
 
 export default function Searchbar({
   searchName,

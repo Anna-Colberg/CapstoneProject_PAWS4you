@@ -3,9 +3,14 @@ import Link from "next/link";
 
 export const SliderWrapper = styled.div`
   width: 100%;
-  padding: 2rem;
+  margin-top: 2rem;
+  
   .swiper {
-    padding-bottom: 2rem;
+    padding-bottom: 40px;
+  }
+  .swiper-slider{
+    display:flex;
+    justify-content: center;
   }
   .swiper-pagination-bullet {
     background-color: #ccc;
@@ -13,21 +18,17 @@ export const SliderWrapper = styled.div`
   .swiper-pagination-bullet-active {
     background-color: #333;
   }
+
+@media screen and (max-width: 480px) {
+  padding: 1rem;
+}
 `;
 
-export const Slide = styled(Link)`
-  height: 220px;
-  background-color: #ece2e3;
-  color: #971525;
-  border-radius: 1rem;
-  border: solid 2px #0b0506;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.5rem;
-  text-decoration: none;
-  transition: transform 0.2s ease;
-  &:hover {
-    transform: scale() (1.03);
-  }
+export const PortraitSlide = styled.div`
+position: relative;
+width: 100%;
+max-width: 260px;
+aspect-ratio: 3 / 4;
+border-radius: 16px;
+overflow: hidden;
 `;
