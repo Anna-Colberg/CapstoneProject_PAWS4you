@@ -1,30 +1,28 @@
 import Link from "next/link";
-import Image from "next/image";
+import { Card, Tabline, ImageWrapper } from "./styledBreedCard";
+import FavoriteButton from "../FavoriteButton";
 
-export default function BreedCard({ _id, name, high, fciNumber, imageUrl }) {
+export default function BreedCard({
+  _id,
+  name,
+  imageUrl,
+  toggleFavorite,
+  favoriteDogIds,
+}) {
   const imageSrc = imageUrl || "/images/placeholder.jpg";
+  const isFavorite = favoriteDogIds?.includes(_id);
 
   return (
-    <article className="breed-card">
+    <Card className="breed-card">
       <Link href={`/dogs/${_id}`}>
-        <div className="image-wrapper">
-          <Image
-            src={imageSrc}
-            alt={name}
-            width={200}
-            height={200}
-            className="breed-image"
-          />
-        </div>
-
-        <h3 className="breed-name">{name}</h3>
+        <ImageWrapper src={imageSrc} alt={name} width={200} height={200} />
       </Link>
-      <p>
-        <strong>Schultergröße:</strong> {high}
-      </p>
-      <p>
-        <strong>FCI-Nummer:</strong> {fciNumber}
-      </p>
-    </article>
+      <Tabline>{name}</Tabline>
+      <FavoriteButton
+        _id={_id}
+        toggleFavorite={toggleFavorite}
+        isFavorite={isFavorite}
+      ></FavoriteButton>
+    </Card>
   );
 }
