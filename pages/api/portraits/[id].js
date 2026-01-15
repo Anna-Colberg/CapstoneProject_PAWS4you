@@ -7,12 +7,7 @@ import Portraits from "@/db/models/Portraits";
 
 export default async function eachPortraithandler(request, response) {
   await dbConnect();
-
   const { id } = request.query;
-
-  if (request.method !== "GET") {
-    return response.status(405).json({ status: "Method not allowed." });
-  }
 
   try {
     const portrait = await Portraits.findById(id);
@@ -22,6 +17,10 @@ export default async function eachPortraithandler(request, response) {
         .status(404)
         .json({ status: "Portrait not found !" });
     }
+
+ if (request.method !== "GET") {
+    return response.status(405).json({ status: "Method not allowed." });
+  }
 
     return response.status(200).json(portrait);
   } catch (error) {

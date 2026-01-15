@@ -1,5 +1,11 @@
 import { useState } from "react";
-import { FormWrapper, Form, Input, SubmitButton, CancelButton } from "./styledFilter";
+import {
+  FormWrapper,
+  Form,
+  Input,
+  SubmitButton,
+  CancelButton,
+} from "./styledFilter";
 
 export default function Searchbar({
   searchName,
@@ -33,12 +39,6 @@ export default function Searchbar({
           placeholder="Search a Breed Name"
           value={nameInput}
           onChange={(event) => setNameInput(event.target.value)}
-        />
-
-        <Input
-          placeholder="Search Your Favorite Size"
-          value={highInput}
-          onChange={(event) => setHighInput(event.target.value)}
         />
         <SubmitButton type="submit">Search</SubmitButton>
 

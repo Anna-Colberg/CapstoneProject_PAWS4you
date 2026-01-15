@@ -11,6 +11,10 @@ export const NavigationWrapper = styled.nav`
   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
   z-index: 1000;
   padding: 0.5rem 0;
+
+  @media screen and (max-width: 480px) {
+    padding: 0.75rem 0;
+  }
 `;
 
 export const NavigationList = styled.ul`
@@ -20,6 +24,12 @@ export const NavigationList = styled.ul`
   margin: 0;
   padding: 1rem;
   list-style: none;
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
 `;
 
 export const NavigationLink = styled(Link)`
@@ -39,10 +49,16 @@ export const NavigationLink = styled(Link)`
     transform: translateY(-3px);
     filter: brightness(1.2);
     background-color: transparent;
+
     img {
       filter: brightness(1.2);
     }
   }
+@media screen and (max-width: 480px) {
+  font-size: 14px;
+  padding: 0.4rem;
+}
+
   &.active img {
     filter: ${({ $highlighted }) =>
       $highlighted ? "brightness(1.5)" : "brightness(1)"};
