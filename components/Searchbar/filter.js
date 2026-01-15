@@ -40,12 +40,6 @@ export default function Searchbar({
           value={nameInput}
           onChange={(event) => setNameInput(event.target.value)}
         />
-
-        <Input
-          placeholder="Search Your Favorite Size"
-          value={highInput}
-          onChange={(event) => setHighInput(event.target.value)}
-        />
         <SubmitButton type="submit">Search</SubmitButton>
 
         <CancelButton type="button" onClick={handleReset}>
