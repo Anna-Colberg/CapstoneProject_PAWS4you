@@ -15,20 +15,20 @@ export default function Navigation() {
     <NavigationWrapper>
       <NavigationList>
           <NavigationLink
-            href="/" >
+            href="/" $active={router.pathname === "/"}>
             <Birdhouse width={30} height={30} />
           </NavigationLink>
       
           <NavigationLink href="/favorite" $active={router.pathname === "/favorite"}>
-            <HandHeart size={30} />
+            <HandHeart width={30} height={30} />
           </NavigationLink>
 
-          <NavigationLink href="/lexikon" >
+          <NavigationLink href="/lexikon"$active={router.pathname === "/lexikon"} >
             <Dog width={30} height={30} />
           </NavigationLink>
     
           <NavigationLink
-            href="/profil" >
+            href="/profil" $active={router.pathname === "/profil"}>
             <PawPrint width={30} height={30} />
           </NavigationLink>
       </NavigationList>
