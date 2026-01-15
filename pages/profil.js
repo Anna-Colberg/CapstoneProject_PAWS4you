@@ -17,11 +17,15 @@ import {
   Subtitle,
   Title,
 } from "@/components/styledPages";
-import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
+import { useSession } from "next-auth/react";
+import { BackButton } from "@/components/Notice/styledNotice";
 
 export default function ProfilPage() {
-  /* const { data: session, status } = useSession(); */
+  const { data: session, status } = useSession();
+
+  const router = useRouter();
 
   const [showForm, setShowForm] = useState(false);
   const [myPets, setMyPets] = useState([]);
@@ -41,10 +45,22 @@ export default function ProfilPage() {
     fetchPets();
   }, []);
 
-  /*   if (status === "loading") return <p>Loading...</p>;
+  if (status === "loading") {
+    return <p>Loading...</p>;
+  }
+
   if (!session) {
-    return <p>You must be logged in to view this page.</p>;
-  } */
+    return (
+      <PageWrapper>
+        <BackButton onClick={() => router.back()}>BACK</BackButton>
+
+        <StyledContainer>
+          <Title>myPAWS</Title>
+          <p>You must be logged in to view this page.</p>
+        </StyledContainer>
+      </PageWrapper>
+    );
+  }
 
   async function handleAddPet(pet) {
     const response = await fetch(`/api/pets`, {
@@ -91,23 +107,25 @@ export default function ProfilPage() {
       <StyledContainer>
         <Title>myPAWS</Title>
         <Subtitle>My Dogs/Cats/Pets/...</Subtitle>
-        <h3>Test User`s Profile</h3>
+        <h3>{session.user.name}`s Profile</h3>
         <Navigation />
 
         <CreateSection>
           <SectionTitle>Create myPAWS</SectionTitle>
-       {   <Button
-            onClick={() => {
-              if (showForm) {
-                handleCancelForm();
-              } else {
-                setEditingPet(null);
-                setShowForm(true);
-              }
-            }}
-          >
-            {showForm ? "Cancel" : "+"}
-          </Button>}
+          {
+            <Button
+              onClick={() => {
+                if (showForm) {
+                  handleCancelForm();
+                } else {
+                  setEditingPet(null);
+                  setShowForm(true);
+                }
+              }}
+            >
+              {showForm ? "Cancel" : "+"}
+            </Button>
+          }
         </CreateSection>
 
         {showForm && (
