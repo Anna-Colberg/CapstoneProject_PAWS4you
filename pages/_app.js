@@ -3,6 +3,7 @@ import GlobalStyle from "../styles";
 import { SWRConfig } from "swr";
 import useLocalStorageState from "use-local-storage-state";
 
+
 const fetcher = (url) => fetch(url).then((response) => response.json());
 
 export default function App({

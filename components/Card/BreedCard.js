@@ -1,6 +1,14 @@
 import Link from "next/link";
-import { Card, Tabline, ImageWrapper } from "./styledBreedCard";
+import {
+  Card,
+  Tabline,
+  Info,
+  InfoLabel,
+  InfoValue,
+  ImageWrapper,
+} from "./styledBreedCard";
 import FavoriteButton from "../FavoriteButton";
+
 
 export default function BreedCard({
   _id,
