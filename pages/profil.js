@@ -4,7 +4,6 @@ import {
   CreateSection,
   DeleteButton,
   EditButton,
-  BackButton,
   PetCard,
   PetInfo,
   PetList,
@@ -21,6 +20,7 @@ import {
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { useSession } from "next-auth/react";
+import { BackButton } from "@/components/Notice/styledNotice";
 
 export default function ProfilPage() {
   const { data: session, status } = useSession();
