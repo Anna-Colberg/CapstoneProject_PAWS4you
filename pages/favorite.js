@@ -1,5 +1,4 @@
 import BreedCard from "@/components/Card/BreedCard";
-import BreedList from "@/components/List/BreedList";
 import Navigation from "@/components/Navigation/navigation";
 import { Grid } from "@/components/styledFavorites";
 import { PageWrapper, StyledContainer, Subtitle, Title } from "@/components/styledPages";

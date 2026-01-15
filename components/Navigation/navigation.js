@@ -4,10 +4,10 @@ import {
   NavigationList,
 } from "./styledNavigation";
 import { useRouter } from "next/router";
-import Home from "/public/icons/home.svg";
-import Lexikon from "/public/icons/lexikon.svg";
-import Favorite from "/public/icons/favorite.svg";
-import Profil from "/public/icons/profil.svg";
+import { HandHeart } from "lucide-react";
+import { Birdhouse } from "lucide-react";
+import { Dog } from "lucide-react";
+import { PawPrint } from "lucide-react";
 
 export default function Navigation() {
   const router = useRouter();
@@ -15,21 +15,21 @@ export default function Navigation() {
     <NavigationWrapper>
       <NavigationList>
           <NavigationLink
-            href="/" $highlighted={router.pathname === "/" ? "active" : ""}>
-            <Home width={30} height={30} />
+            href="/" $active={router.pathname === "/"}>
+            <Birdhouse width={30} height={30} />
           </NavigationLink>
       
-          <NavigationLink href="/favorite" $highlighted={router.pathname === "/favorite" ? "active" : ""}>
-            <Favorite width={30} height={30} />
+          <NavigationLink href="/favorite" $active={router.pathname === "/favorite"}>
+            <HandHeart width={30} height={30} />
           </NavigationLink>
 
-          <NavigationLink href="/lexikon" $highlighted={router.pathname === "/lexikon" ? "active" : ""}>
-            <Lexikon width={30} height={30} />
+          <NavigationLink href="/lexikon"$active={router.pathname === "/lexikon"} >
+            <Dog width={30} height={30} />
           </NavigationLink>
     
           <NavigationLink
-            href="/profil" $highlighted={router.pathname === "/profil" ? "active" : ""}>
-            <Profil width={30} height={30} />
+            href="/profil" $active={router.pathname === "/profil"}>
+            <PawPrint width={30} height={30} />
           </NavigationLink>
       </NavigationList>
     </NavigationWrapper>

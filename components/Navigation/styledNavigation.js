@@ -26,7 +26,6 @@ export const NavigationList = styled.ul`
   list-style: none;
 
   @media screen and (max-width: 480px) {
-    flex-direction: column;
     gap: 0.5rem;
     padding: 0.5rem 0;
   }
@@ -39,25 +38,37 @@ export const NavigationLink = styled(Link)`
   text-decoration: none;
   font-weight: 500;
   padding: 0.5rem;
+  border-radius: 50%;
   transition: transform 0.2s, filter 0.2s, color 0.2s;
 
-  background-color: ${({ $highlighted }) =>
-    $highlighted ? "#410404ff" : "transparent"};
-  border-radius: ${({ $highlighted }) => ($highlighted ? "50%" : "0")};
+  color: ${({ $active }) => ($active ? "#410404ff" : "#fdc2c2ff")};
+  background-color: ${({ $active }) =>
+    $active ? "rgba(65, 4, 4, 0.15)" : "transparent"};
 
-  &:hover {
-    transform: translateY(-3px);
-    filter: brightness(1.2);
-    background-color: transparent;
+  transition: color 0.2s ease, background-color 0.2s ease, transform 0.15s ease;
 
-    img {
-      filter: brightness(1.2);
-    }
+  svg {
+    stroke: currentColor;
+    transition: transform 0.15s ease, stroke 0.2s ease;
   }
-@media screen and (max-width: 480px) {
-  font-size: 14px;
-  padding: 0.4rem;
-}
+
+  svg path {
+    stroke: var(--accent);
+    fill: ${({ $isFavorite }) => ($isFavorite ? "#0000" : "none")};
+    transition: fill 0.2s ease, stroke 0.2s ease;
+  }
+
+  &:hover svg {
+    transform: scale(1.1);
+  }
+
+  img {
+    filter: brightness(1.2);
+  }
+
+  @media screen and (max-width: 480px) {
+    padding: 0.4rem;
+  }
 
   &.active img {
     filter: ${({ $highlighted }) =>
