@@ -121,7 +121,7 @@ export default function ProfilPage() {
         {myPets.length === 0 && <p> Not addet Pets.</p>}
         <PetList>
           {myPets.map((pet) => (
-            <PetCard key={pet.id}>
+            <PetCard key={pet._id}>
               <PetName>{pet.name}</PetName>
               <PetInfo>Species : {pet.species}</PetInfo>
               <PetInfo>Breed : {pet.breed} </PetInfo>

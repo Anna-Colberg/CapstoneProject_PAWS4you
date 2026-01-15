@@ -32,7 +32,7 @@ const date = now.toLocaleString([], {
   }
 
   return (
-    <FormNotice>
+    <FormNotice onSubmit={handleSubmit}>
       <VerticalStroke />
       <TitelNotice>New Notice</TitelNotice>
       <label htmlFor="notice"></label>
@@ -42,7 +42,7 @@ const date = now.toLocaleString([], {
         placeholder="Add Notice here ..."
         onChange={handleChange}
       ></Input>
-      <SendButton onClick={handleSubmit} type="submit">
+      <SendButton onClick={handleSubmit}>
         Send
       </SendButton>
       <VerticalStroke />
