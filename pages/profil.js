@@ -58,6 +58,7 @@ export default function ProfilPage() {
           <Title>myPAWS</Title>
           <p>You must be logged in to view this page.</p>
         </StyledContainer>
+        <Navigation />
       </PageWrapper>
     );
   }
