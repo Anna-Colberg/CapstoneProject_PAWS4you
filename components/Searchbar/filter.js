@@ -40,9 +40,9 @@ export default function Searchbar({
           value={nameInput}
           onChange={(event) => setNameInput(event.target.value)}
         />
-        <SubmitButton type="submit">Search</SubmitButton>
+        <SubmitButton aria-label="search" type="submit">Search</SubmitButton>
 
-        <CancelButton type="button" onClick={handleReset}>
+        <CancelButton aria-label="remove" type="button" onClick={handleReset}>
           Remove
         </CancelButton>
       </Form>

@@ -9,7 +9,7 @@ export default function FavoriteButton({ _id, toggleFavorite, isFavorite }) {
       aria-label={isFavorite ? "unlike" : "like"}
       $isFavorite={isFavorite}
     >
-      <Bone color={isFavorite ? "blue" : "black"}
+      <Bone color={isFavorite ? "#801100ff" : "black"}
       strokeWidth={2}/>
     </IconButton>
   );

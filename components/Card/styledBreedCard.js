@@ -1,82 +1,82 @@
 import styled from "styled-components";
 import Image from "next/image";
 
-
 export const Card = styled.article`
-width: 220px;
-display: flex;
-flex-direction: column;
-gap: 16px;
-align-items: center;
-position: relative;
-background-color: rgba(219, 36, 36, 1);
-border-radius: 8px;
+  width: 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  position: relative;
+  background-color: rgba(135, 113, 113, 0.67);
+  border-radius: 12px;
 
-@media screen and (max-width: 768px) {
-grid-template-columns: 1fr;
-}
+  @media screen and (max-width: 768px) {
+    max-width: 320px;
+    margin: 0 auto;
+  }
 `;
 
 export const Tabline = styled.h3`
-margin-top: 0.5rem;
-font-size: 1rem;
-color: #980202ad;
-font-weight: 600;
-text-align: center;
-line-height: 1.2;
-position: absolute;
-border-bottom: solid black;
-border-left: solid black;
-border-right: solid black;
+  margin-top: 85%;
+  font-size: 0.95rem;
+  color: #f3ee9b;
+  font-weight: 600;
+  text-align: center;
+  line-height: 1.2;
+  border: 1px solid black;
+  padding: 4px 8px;
+  border-radius: 6px;
 
-background-color: #fbbcbcff;
-word-break: break-word;
-max-width: 100%;
+  position: absolute;
+  background-color: rgb(162, 32, 32);
+  word-break: break-word;
+  max-width: 100%;
 
-@media screen and (max-width: 480) {
-font-size: 16px;
-left: 20%;
-}
+  @media screen and (max-width: 480) {
+    font-size: 16px;
+    left: 20%;
+  }
 `;
 
 export const Info = styled.div`
-margin: 0;
-font-size: 14px;
-display: flex;
-flex-direction: column;
-gap: 10px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 15px;
+    gap: 12px;
+  }
 `;
 
 export const InfoLabel = styled.span`
-font-size: medium;
-font-weight: 600;
-color: #000000;
-text-decoration: underline;
-text-underline-offset: 3px;
+  font-size: medium;
+  font-weight: 600;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 `;
 
 export const InfoValue = styled.span`
-font-size: medium;
-color: #000000;
-text-decoration: underline;
-text-underline-offset: 3px;
+  font-size: medium;
+  color: #000000;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 `;
 
 export const ImageWrapper = styled(Image)`
-width: 200px;
-height: 200px;
-overflow: hidden;
-border-radius: 12px;
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 12px;
 
-img {
-    width: 100%;
-    height: 100%;
+  img {
     object-fit: cover;
-    display: block;
-}
+  }
 
-@media screen and (max-width: 768px) {
-width: 100%;
-height: auto;
-}
+  @media screen and (max-width: 768px) {
+    height: 200px;
+  }
 `;

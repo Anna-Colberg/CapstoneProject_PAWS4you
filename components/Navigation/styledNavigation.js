@@ -8,7 +8,7 @@ export const NavigationWrapper = styled.nav`
   width: 100%;
   background-color: #ffff;
   border-top: 2px solid #fdc2c2ff;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 -2px 10px rgb(0, 0, 0, 0.05);
   z-index: 1000;
   padding: 0.5rem 0;
 
@@ -41,7 +41,7 @@ export const NavigationLink = styled(Link)`
   border-radius: 50%;
   transition: transform 0.2s, filter 0.2s, color 0.2s;
 
-  color: ${({ $active }) => ($active ? "#410404ff" : "#fdc2c2ff")};
+  color: ${({ $active }) => ($active ? "#410404ff" : "rgb(127, 87, 87)")};
   background-color: ${({ $active }) =>
     $active ? "rgba(65, 4, 4, 0.15)" : "transparent"};
 

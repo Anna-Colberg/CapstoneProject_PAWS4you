@@ -9,7 +9,7 @@ gap: 1rem;
 `;
 
 export const Card = styled.article`
-background-color: #4567;
+background-color: var(--color-slider);
 border-radius: 8px;
 padding: 0.75rem;
 text-align: center;

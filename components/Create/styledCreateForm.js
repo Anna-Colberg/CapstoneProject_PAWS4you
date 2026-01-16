@@ -22,8 +22,8 @@ export const PetList = styled.ul`
 export const PetCard = styled.li`
   padding: 1.2rem;
   border-radius: 12px;
-  background-color: #f7f7f7;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  background-color: var(--color-secondary);
+  box-shadow: 0 4px 15px rgb(0, 0, 0, 0.08);
 
   display: flex;
   flex-direction: column;
@@ -42,8 +42,8 @@ export const FormWrapper = styled.form`
   margin: 2rem auto;
   padding: 2rem 2.5rem;
   border-radius: 12px;
-  background-color: #f9f9f9;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: var(--color-background);
+  box-shadow: 0 10px 30px rgb(0, 0, 0, 0.1);
 
   display: flex;
   flex-direction: column;
@@ -57,9 +57,9 @@ export const FormGroup = styled.div`
 export const Button = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  background: rgba(237, 217, 161, 0.84);
-  color: #000;
-  border: 2px solid;
+  background: var(--color-button);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
   cursor: pointer;
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -72,9 +72,9 @@ export const Button = styled.button`
 export const AddButton = styled.button`
   padding: 0.5rem 1rem;
   border-radius: 8px;
-  background: rgba(13, 178, 10, 0.84);
-  color: #000;
-  border: 2px solid;
+  background: var(--color-addbutton);
+  color: var(--color-addbutton2);
+  border: 2px solid var(--color-addbutton2);
   cursor: pointer;
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -87,9 +87,9 @@ export const AddButton = styled.button`
 export const DeleteButton = styled.button`
   padding: 0.3rem 1.5rem;
   border-radius: 8px;
-  background: rgba(255, 21, 21, 0.84);
-  color: #000;
-  border: 2px solid;
+  background: var(--color-deletebutton);
+  color: var(--color-deletebutton2);
+  border: 2px solid var(--color-deletebutton2);
   cursor: pointer;
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -102,9 +102,9 @@ export const DeleteButton = styled.button`
 export const EditButton = styled.button`
   padding: 0.3rem 1.5rem;
   border-radius: 8px;
-  background: rgba(237, 217, 161, 0.84);
-  color: #000;
-  border: 2px solid;
+  background: var(--color-button);
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
   cursor: pointer;
   font-size: 1rem;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
@@ -119,13 +119,13 @@ export const CreateInput = styled.input`
   max-width: 30rem;
   padding: 1rem 1.5rem;
   border-radius: 8px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-input);
   font-size: 1rem;
   text-align: center;
 
   &:focus {
     outline: none;
-    border-color: #333;
+    border-color: var(--color-input2);
   }
 `;
 export const CreateLabel = styled.label`
@@ -147,7 +147,7 @@ export const RadioLabel = styled.label`
 export const VerticalStroke = styled.hr`
   border: none;
   height: 2px;
-  background-color: #333;
+  background-color: var(--color-primary);
   width: 90%;
   margin: 20px auto;
 `;
