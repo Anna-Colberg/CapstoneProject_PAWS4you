@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const FormWrapper = styled.div`
-  background-color: #f5e4e4ff;
+  background-color: var(--color-filter);
   padding: 15px 20px;
   border-radius: 10px;
   margin-bottom: 25px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 5px 5px 5px rgb(0, 0, 0, 0.1);
 
   @media screen and (max-width: 480px) {
     padding: 10px 15px;
@@ -32,7 +32,7 @@ export const Input = styled.input`
   padding: 6px 10px;
   font-size: 14px;
   border-radius: 6px;
-  border: 1px solid #ccc;
+  border: 1px solid var(--color-input);
 
   @media screen and (max-width: 600px) {
     flex: 1 1 100%;
@@ -44,16 +44,16 @@ export const SubmitButton = styled.button`
   font-size: 14px;
   border-radius: 6px;
   border: none;
-  background-color: #5b2aa6;
-  color: #ffff;
+  background-color: var(--color-h2);
+  color: var(--color-secondary);
   cursor: pointer;
   transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
 
   &:hover {
-    background-color: #efef87ff;
+    background-color: var(--color-button);
     font-size: 14px;
-    color: #000000ff;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+    color: var(--color-primary);
+    box-shadow: 0 2px 6px rgb(0, 0, 0, 0.25);
   }
 
 @media screen and (max-width: 480px) {
@@ -62,11 +62,11 @@ export const SubmitButton = styled.button`
 `;
 
 export const CancelButton = styled(SubmitButton)`
-  background-color: #5b2aa6;
-  color: #ffffffff;
+  background-color: var(--color-h2);
+  color: var(--color-secondary);
 
   &:hover {
-    background-color: #efef87ff;
-    color: #000000ff;
+    background-color: var(--color-button);
+    color: var(--color-primary);
   }
 `;

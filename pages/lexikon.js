@@ -62,10 +62,3 @@ export default function LexikonPage({ toggleFavorite, favoriteDogIds }) {
     </PageWrapper>
   );
 }
-
-
-//React-Hook useMemo(für Berechnungen/ Sortieren = Berechnen)
-//merkt sich dies und ändert sich nur, wenn Dogs neu gerendert wird.
-
-//.slice = Kopieren / .sort = Sortieren, Array wird neu dargestellt
-//.localeCompare = Alphabetisches sortieren

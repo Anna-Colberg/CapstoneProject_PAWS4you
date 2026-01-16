@@ -10,6 +10,7 @@ export const FormNotice = styled.form`
 export const TitelNotice = styled.h2`
   font-size: 1rem;
   margin-bottom: -1rem;
+  color: var(--color-primary);
 `;
 export const Input = styled.input`
   width: 100%;
@@ -22,7 +23,7 @@ export const Input = styled.input`
 
   &:focus {
     outline: none;
-    border-color: #333;
+    border-color: var(--color-primary);
   }
 `;
 export const NoNoticePart = styled.p`
@@ -38,6 +39,7 @@ export const NoNoticePart = styled.p`
 
 export const NoticeTitle = styled.h2`
   font-size: 1rem;
+  color: var(--color-primary);
 `;
 
 export const OutputSection = styled.div`
@@ -77,7 +79,7 @@ export const OutputSection = styled.div`
 export const VerticalStroke = styled.hr`
   border: none;
   height: 2px;
-  background-color: #333;
+  background-color: var(--color-primary);
   width: 90%;
   margin: 20px auto;
 `;
@@ -85,9 +87,9 @@ export const VerticalStroke = styled.hr`
 export const SendButton = styled.div`
   padding: 0.8rem 1.2rem;
   border-radius: 8px;
-  background: rgba(13, 178, 10, 0.84);
-  color: #000;
-  border: none;
+  background: var(--color-addbutton);
+  color: var(--color-addbutton2);
+  border: 1px solid var(--color-addbutton) ;
   cursor: pointer;
   font-size: 1rem;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
@@ -100,7 +102,7 @@ export const SendButton = styled.div`
  padding: 0.8rem 1.2rem;
  gap:2rem;
   border-radius: 8px;
-  background: #000;
+  background: var(--color-primary);
   color: white;
   border: none;
   cursor: pointer;
@@ -116,9 +118,9 @@ export const DeleteButton = styled.button`
  padding: 0.8rem 1.2rem;
  gap:2rem;
   border-radius: 8px;
-  background: #f548487c;
-  color: #000;
-  border: none;
+  background: var(--color-deletebutton);
+  color: var(--color-deletebutton2);
+  border: 1px solid var(--color-deletebutton2);
   cursor: pointer;
   font-size: 1rem;
   font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;

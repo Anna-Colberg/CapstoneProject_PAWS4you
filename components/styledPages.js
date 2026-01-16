@@ -12,8 +12,8 @@ export const StyledContainer = styled.div`
   width: 95%;
   margin: 2rem auto;
   padding: 2.5rem;
-  background-color: aliceblue;
-  border: 2px solid;
+  background-color: var(--color-background);
+  border: 2px solid var(--color-h1);
   border-radius: 16px;
   box-shadow: 0 8px 20px rgb(0, 0, 0, 0.1);
 
@@ -33,10 +33,10 @@ export const StyledContainer = styled.div`
 export const Title = styled.h1`
   display: flex;
   justify-content: center;
-  color: #801100ff;
+  color: var(--color-h1);
   font-size: 2.5rem;
   margin-bottom: 1rem;
-  border-bottom: solid;
+  border-bottom: solid var(--color-primary);
   text-align: center;
   font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
     "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
@@ -52,7 +52,7 @@ export const Title = styled.h1`
 export const Subtitle = styled.h2`
   display: flex;
   justify-content: center;
-  color: #7d4140ff;
+  color: var(--color-h2);
   font-size: 1.5rem;
   margin-bottom: 1rem;
   text-align: center;
@@ -107,7 +107,7 @@ export const IconButton = styled.button`
 
   svg path {
     stroke: var(--accent);
-    fill: ${({ $isFavorite }) => ($isFavorite ? "#0000" : "none")};
+    fill: ${({ $isFavorite }) => ($isFavorite ? "#801100ff" : "none")};
     transition: fill 0.2s ease, stroke 0.2s ease;
   }
 
@@ -122,7 +122,7 @@ height: 28px;
 transition: fill 0.2s ease, transform 0.15s ease;
 
 path {
-  fill: ${({ $isFavorite}) => ($isFavorite ? "black" : "none")};
-  stroke: #0000;
+  fill: ${({ $isFavorite}) => ($isFavorite ? "#edd9a1d6" : "none")};
+  stroke: "#801100ff";
 }
 `;

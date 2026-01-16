@@ -17,7 +17,7 @@ export default function FavoritePage({ favoriteDogIds, toggleFavorite }) {
     <PageWrapper>
       <StyledContainer>
         <Title>Favorites Page</Title>
-        <Subtitle>your Favorites 🐾🎔</Subtitle>
+        <Subtitle>your Favorites 🐾</Subtitle>
 
         {favoriteDogs.length === 0 ? (
           <p>No favorites yet.</p>

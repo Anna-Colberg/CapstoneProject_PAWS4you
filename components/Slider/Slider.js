@@ -14,9 +14,9 @@ export default function Slider({ dogs, toggleFavorite, favoriteDogIds }) {
     <SliderWrapper>
       <Swiper
         modules={[Pagination]}
-        slidesPerView={1.2}
+        slidesPerView="auto"
         centeredSlides={true}
-        spaceBetween={20}
+        spaceBetween={100}
         pagination={{ clickable: true }}
       >
         {dogs.map((dog) => (

@@ -1,22 +1,34 @@
 import styled from "styled-components";
-import Link from "next/link";
+
 
 export const SliderWrapper = styled.div`
   width: 100%;
   margin-top: 2rem;
+  overflow: visible;
   
   .swiper {
-    padding-bottom: 40px;
+    overflow: hidden;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-bottom: 50px;
   }
-  .swiper-slider{
+  .swiper-slide{
     display:flex;
     justify-content: center;
+    width: auto;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    opacity: 0.5;
+    flex-shrink: 0;
+  }
+  .swiper-slide-active {
+    transform:scale(1.05);
+    opacity: 1;
   }
   .swiper-pagination-bullet {
-    background-color: #ccc;
+    background-color: var(--color-slider);
   }
   .swiper-pagination-bullet-active {
-    background-color: #333;
+    background-color: var(--color-h1);
   }
 
 @media screen and (max-width: 480px) {
@@ -26,7 +38,7 @@ export const SliderWrapper = styled.div`
 
 export const PortraitSlide = styled.div`
 position: relative;
-width: 100%;
+width: 220px;
 max-width: 260px;
 aspect-ratio: 3 / 4;
 border-radius: 16px;
