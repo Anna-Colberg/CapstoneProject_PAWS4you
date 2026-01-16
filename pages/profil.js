@@ -37,13 +37,15 @@ export default function ProfilPage() {
   }
 
   useEffect(() => {
+    if (!session) return;
+
     async function fetchPets() {
       const response = await fetch(`/api/pets`);
       const data = await response.json();
       setMyPets(data);
     }
     fetchPets();
-  }, []);
+  }, [session]);
 
   if (status === "loading") {
     return <p>Loading...</p>;
