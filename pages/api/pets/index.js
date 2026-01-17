@@ -1,37 +1,56 @@
 import dbConnect from "@/db/connect";
 import Pets from "@/db/models/Pets";
+import { getServerSession } from "next-auth";
+import { authOptions } from "../auth/[...nextauth]";
 
 export default async function petshandler(request, response) {
   await dbConnect();
 
+  const session = await getServerSession(request, response, authOptions);
+
+  if (!session) {
+    return response.status(401).json({ status: "Unauthorized" });
+  }
+
+  const ownerId = session.user.id;
+
   if (request.method === "GET") {
-    const pets = await Pets.find({});
+    const pets = await Pets.find({ ownerId });
     return response.status(200).json(pets);
   }
 
   if (request.method === "POST") {
-    const pet = new Pets(request.body);
-    await pet.save();
+    const pet = await Pets.create({
+      ...request.body,
+      ownerId,
+    });
     return response.status(201).json(pet);
   }
 
   if (request.method === "PUT") {
-    try {
-      const { id, ...updatedData } = request.body;
+    const { id, ...updatedData } = request.body;
 
-      const updatedPet = await Pets.findByIdAndUpdate(id, updatedData, {
-        new: true,
-      });
+    const pet = await Pets.findOneAndUpdate({ _id: id, ownerId }, updatedData, {
+      new: true,
+    });
 
-      return response.status(200).json(updatedPet);
-    } catch (error) {
-      return response.status(400).json({ status: "Could not update pet" });
+    if (!pet) {
+      return response.status(403).json({ status: "Forbidden" });
     }
+
+    return response.status(200).json(pet);
   }
 
   if (request.method === "DELETE") {
     const { id } = request.body;
-    await Pets.findByIdAndDelete(id);
+
+    const pet = await Pets.findOneAndDelete({
+      _id: id,
+      ownerId,
+    });
+    if (!pet) {
+      return response.status(403).json({ status: "Forbidden" });
+    }
     return response.status(200).json({ status: "Deleted" });
   }
 
