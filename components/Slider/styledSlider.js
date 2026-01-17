@@ -11,6 +11,7 @@ export const SliderWrapper = styled.div`
     padding-left: 80px;
     padding-right: 80px;
     padding-bottom: 50px;
+    padding-top: 20px;
   }
   .swiper-slide{
     display:flex;

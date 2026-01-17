@@ -10,6 +10,7 @@ export const Card = styled.article`
   position: relative;
   background-color: rgba(135, 113, 113, 0.67);
   border-radius: 12px;
+  padding: 20px;
 
   @media screen and (max-width: 768px) {
     max-width: 320px;
