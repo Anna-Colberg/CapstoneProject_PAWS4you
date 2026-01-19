@@ -25,7 +25,6 @@ export const StyledContainer = styled.div`
   }
   @media screen and (max-width: 480px) {
     padding: 1rem;
-    margin: 1rem;
     border-radius: 12px;
   }
 `;
